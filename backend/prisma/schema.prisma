@@ -1,0 +1,211 @@
+// ─────────────────────────────────────────────────────────
+// EcoConnect — Prisma Schema
+// Database: PostgreSQL
+// ─────────────────────────────────────────────────────────
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── ENUMS ────────────────────────────────────────────────
+
+enum UserRole {
+  PATIENT
+  PROFESSIONAL
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum LogType {
+  OBSERVATION
+  SESSION
+  PROGRESS
+  NOTE
+}
+
+enum NeurodivergenceType {
+  TEA
+  ADHD
+  DYSLEXIA
+  DYSPRAXIA
+  OTHER
+  UNSPECIFIED
+}
+
+// ─── MODELS ───────────────────────────────────────────────
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  avatar    String?  // two initials, e.g. "MC"
+  role      UserRole @default(PATIENT)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  patientProfile      PatientProfile?
+  professionalProfile ProfessionalProfile?
+  logsCreated         Log[]               @relation("LogCreator")
+  objectivesCreated   Objective[]         @relation("ObjectiveCreator")
+
+  @@map("users")
+}
+
+model PatientProfile {
+  id              String              @id @default(uuid())
+  userId          String              @unique
+  condition       NeurodivergenceType @default(UNSPECIFIED)
+  conditionDetail String?
+  xp              Int                 @default(0)
+  level           Int                 @default(1)
+  professionalId  String?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+
+  // Relations
+  user         User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  professional ProfessionalProfile? @relation(fields: [professionalId], references: [id])
+  objectives   Objective[]
+  logs         Log[]
+  appointments Appointment[]
+
+  @@map("patient_profiles")
+}
+
+model ProfessionalProfile {
+  id         String   @id @default(uuid())
+  userId     String   @unique
+  crp        String?  // Conselho Regional de Psicologia
+  specialty  String?
+  bio        String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  user         User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  patients     PatientProfile[]
+  organizations Organization[]   @relation("ProfessionalOrganizations")
+  appointments Appointment[]
+
+  @@map("professional_profiles")
+}
+
+model Organization {
+  id          String   @id @default(uuid())
+  name        String
+  type        String   // "Neuropsicologia", "Terapia Ocupacional", etc.
+  city        String
+  state       String   @default("SP")
+  address     String?
+  phone       String?
+  email       String?
+  website     String?
+  rating      Float    @default(5.0)
+  slotsTotal  Int      @default(10)
+  slotsUsed   Int      @default(0)
+  emoji       String   @default("🏥")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  tags         OrganizationTag[]
+  professionals ProfessionalProfile[] @relation("ProfessionalOrganizations")
+  appointments  Appointment[]
+
+  @@map("organizations")
+}
+
+model OrganizationTag {
+  id             String       @id @default(uuid())
+  organizationId String
+  tag            String
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, tag])
+  @@map("organization_tags")
+}
+
+model Objective {
+  id           String    @id @default(uuid())
+  patientId    String
+  createdById  String
+  text         String
+  done         Boolean   @default(false)
+  xpReward     Int       @default(15)
+  deadline     DateTime?
+  doneAt       DateTime?
+  isVisible    Boolean   @default(true) // visible to patient
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // Relations
+  patient   PatientProfile      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  createdBy User                @relation("ObjectiveCreator", fields: [createdById], references: [id])
+
+  @@map("objectives")
+}
+
+model Log {
+  id          String   @id @default(uuid())
+  patientId   String
+  createdById String
+  type        LogType  @default(OBSERVATION)
+  title       String
+  content     String
+  isVisible   Boolean  @default(false) // false = private (professional only)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  patient   PatientProfile @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  createdBy User           @relation("LogCreator", fields: [createdById], references: [id])
+
+  @@map("logs")
+}
+
+model Appointment {
+  id             String            @id @default(uuid())
+  patientId      String
+  organizationId String
+  professionalId String
+  date           DateTime
+  time           String            // "14:00"
+  status         AppointmentStatus @default(SCHEDULED)
+  notes          String?
+  cancelReason   String?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  // Relations
+  patient      PatientProfile      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  organization Organization        @relation(fields: [organizationId], references: [id])
+  professional ProfessionalProfile @relation(fields: [professionalId], references: [id])
+
+  @@map("appointments")
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("contact_messages")
+}
