@@ -1,7 +1,14 @@
-// ─────────────────────────────────────────────────────────
-// EcoConnect — Prisma Schema
-// Database: PostgreSQL
-// ─────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════
+//  EcoConnect — Schema v3 (Produção)
+//  Banco: PostgreSQL
+//  Alterações v3:
+//    - Adicionado institutionMode em ProfessionalProfile
+//    - Adicionado institutionCount em ProfessionalProfile
+//    - Adicionado modelo Institution (substitui Organization para criações)
+//    - Adicionado InstitutionMember (M:N profissional <-> instituição)
+//    - Organization mantida apenas para compatibilidade de agendamentos
+//    - Seed de demonstração removido
+// ═══════════════════════════════════════════════════════
 
 generator client {
   provider = "prisma-client-js"
@@ -12,7 +19,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ─── ENUMS ────────────────────────────────────────────────
+// ─── Enums ────────────────────────────────────────────
 
 enum UserRole {
   PATIENT
@@ -33,7 +40,7 @@ enum LogType {
   NOTE
 }
 
-enum NeurodivergenceType {
+enum ConditionType {
   TEA
   ADHD
   DYSLEXIA
@@ -42,40 +49,56 @@ enum NeurodivergenceType {
   UNSPECIFIED
 }
 
-// ─── MODELS ───────────────────────────────────────────────
+enum ObjectiveCategory {
+  SLEEP
+  EMOTIONAL
+  SOCIAL
+  MOTOR
+  COGNITIVE
+  ROUTINE
+  COMMUNICATION
+  OTHER
+}
+
+// Papel do profissional dentro de uma instituição
+enum InstitutionRole {
+  ADMIN   // Criador / administrador da instituição
+  MEMBER  // Profissional vinculado
+}
+
+// ─── Modelos ──────────────────────────────────────────
 
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
   password  String
   name      String
-  avatar    String?  // two initials, e.g. "MC"
+  avatar    String?
   role      UserRole @default(PATIENT)
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // Relations
   patientProfile      PatientProfile?
   professionalProfile ProfessionalProfile?
-  logsCreated         Log[]               @relation("LogCreator")
-  objectivesCreated   Objective[]         @relation("ObjectiveCreator")
+  logsCreated         Log[]               @relation("LogAuthor")
+  objectivesCreated   Objective[]         @relation("ObjectiveAuthor")
 
   @@map("users")
+  @@index([email])
 }
 
 model PatientProfile {
-  id              String              @id @default(uuid())
-  userId          String              @unique
-  condition       NeurodivergenceType @default(UNSPECIFIED)
-  conditionDetail String?
-  xp              Int                 @default(0)
-  level           Int                 @default(1)
-  professionalId  String?
-  createdAt       DateTime            @default(now())
-  updatedAt       DateTime            @updatedAt
+  id             String        @id @default(uuid())
+  userId         String        @unique
+  condition      ConditionType @default(UNSPECIFIED)
+  conditionNotes String?
+  xp             Int           @default(0)
+  level          Int           @default(1)
+  professionalId String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
 
-  // Relations
   user         User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
   professional ProfessionalProfile? @relation(fields: [professionalId], references: [id])
   objectives   Objective[]
@@ -86,33 +109,101 @@ model PatientProfile {
 }
 
 model ProfessionalProfile {
-  id         String   @id @default(uuid())
-  userId     String   @unique
-  crp        String?  // Conselho Regional de Psicologia
-  specialty  String?
-  bio        String?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id               String   @id @default(uuid())
+  userId           String   @unique
+  crp              String?
+  specialty        String?
+  bio              String?
+  experience       String?
+  photoUrl         String?
+  education        String?
+  approaches       String[]
+  languages        String[]
+  isVerified       Boolean  @default(false)
 
-  // Relations
+  // Modo Instituição
+  institutionMode  Boolean  @default(false)  // Ativado pelo profissional
+  institutionCount Int      @default(0)       // Contador (máx 3)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   user         User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   patients     PatientProfile[]
-  organizations Organization[]   @relation("ProfessionalOrganizations")
   appointments Appointment[]
+  memberships  InstitutionMember[]  // Vínculos com instituições
 
   @@map("professional_profiles")
 }
 
-model Organization {
+// Instituição criada por profissional com Modo Instituição ativo
+model Institution {
   id          String   @id @default(uuid())
   name        String
-  type        String   // "Neuropsicologia", "Terapia Ocupacional", etc.
+  type        String
+  description String?
   city        String
   state       String   @default("SP")
   address     String?
   phone       String?
   email       String?
   website     String?
+  logoUrl     String?
+  emoji       String   @default("🏥")
+  slotsTotal  Int      @default(10)
+  slotsUsed   Int      @default(0)
+  rating      Float    @default(5.0)
+  isActive    Boolean  @default(true)
+  createdById String   // ProfessionalProfile.id do criador
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tags         InstitutionTag[]
+  members      InstitutionMember[]
+  appointments Appointment[]      @relation("InstitutionAppointments")
+
+  @@map("institutions")
+}
+
+model InstitutionTag {
+  id            String      @id @default(uuid())
+  institutionId String
+  tag           String
+  institution   Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+
+  @@unique([institutionId, tag])
+  @@map("institution_tags")
+}
+
+// Relacionamento M:N — ProfessionalProfile <-> Institution
+model InstitutionMember {
+  id              String          @id @default(uuid())
+  institutionId   String
+  professionalId  String
+  role            InstitutionRole @default(MEMBER)
+  joinedAt        DateTime        @default(now())
+
+  institution  Institution         @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  professional ProfessionalProfile @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+
+  @@unique([institutionId, professionalId])
+  @@map("institution_members")
+}
+
+// Organização (mantida para compatibilidade — não recebe novos dados via UI)
+model Organization {
+  id          String   @id @default(uuid())
+  name        String
+  type        String
+  description String?
+  city        String
+  state       String   @default("SP")
+  address     String?
+  phone       String?
+  email       String?
+  website     String?
+  logoUrl     String?
   rating      Float    @default(5.0)
   slotsTotal  Int      @default(10)
   slotsUsed   Int      @default(0)
@@ -121,10 +212,8 @@ model Organization {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  // Relations
   tags         OrganizationTag[]
-  professionals ProfessionalProfile[] @relation("ProfessionalOrganizations")
-  appointments  Appointment[]
+  appointments Appointment[]
 
   @@map("organizations")
 }
@@ -133,7 +222,6 @@ model OrganizationTag {
   id             String       @id @default(uuid())
   organizationId String
   tag            String
-
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, tag])
@@ -141,23 +229,25 @@ model OrganizationTag {
 }
 
 model Objective {
-  id           String    @id @default(uuid())
-  patientId    String
-  createdById  String
-  text         String
-  done         Boolean   @default(false)
-  xpReward     Int       @default(15)
-  deadline     DateTime?
-  doneAt       DateTime?
-  isVisible    Boolean   @default(true) // visible to patient
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  id          String            @id @default(uuid())
+  patientId   String
+  createdById String
+  text        String
+  category    ObjectiveCategory @default(OTHER)
+  done        Boolean           @default(false)
+  xpReward    Int               @default(15)
+  deadline    DateTime?
+  doneAt      DateTime?
+  isVisible   Boolean           @default(true)
+  notes       String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
 
-  // Relations
-  patient   PatientProfile      @relation(fields: [patientId], references: [id], onDelete: Cascade)
-  createdBy User                @relation("ObjectiveCreator", fields: [createdById], references: [id])
+  patient   PatientProfile @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  createdBy User           @relation("ObjectiveAuthor", fields: [createdById], references: [id])
 
   @@map("objectives")
+  @@index([patientId])
 }
 
 model Log {
@@ -167,36 +257,37 @@ model Log {
   type        LogType  @default(OBSERVATION)
   title       String
   content     String
-  isVisible   Boolean  @default(false) // false = private (professional only)
+  isVisible   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  // Relations
   patient   PatientProfile @relation(fields: [patientId], references: [id], onDelete: Cascade)
-  createdBy User           @relation("LogCreator", fields: [createdById], references: [id])
+  createdBy User           @relation("LogAuthor", fields: [createdById], references: [id])
 
   @@map("logs")
+  @@index([patientId, createdAt])
 }
 
 model Appointment {
-  id             String            @id @default(uuid())
-  patientId      String
-  organizationId String
-  professionalId String
-  date           DateTime
-  time           String            // "14:00"
-  status         AppointmentStatus @default(SCHEDULED)
-  notes          String?
-  cancelReason   String?
-  createdAt      DateTime          @default(now())
-  updatedAt      DateTime          @updatedAt
+  id              String            @id @default(uuid())
+  patientId       String
+  organizationId  String?           // Legacy
+  institutionId   String?           // Novo
+  professionalId  String
+  date            DateTime
+  time            String
+  status          AppointmentStatus @default(SCHEDULED)
+  notes           String?
+  cancelReason    String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
 
-  // Relations
-  patient      PatientProfile      @relation(fields: [patientId], references: [id], onDelete: Cascade)
-  organization Organization        @relation(fields: [organizationId], references: [id])
-  professional ProfessionalProfile @relation(fields: [professionalId], references: [id])
+  patient      PatientProfile  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  organization Organization?   @relation(fields: [organizationId], references: [id])
+  institution  Institution?    @relation("InstitutionAppointments", fields: [institutionId], references: [id])
 
   @@map("appointments")
+  @@index([patientId, date])
 }
 
 model ContactMessage {

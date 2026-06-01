@@ -1,16 +1,1806 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>EcoConnect</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- ── Primary Meta ── -->
+<title>EcoConnect — Plataforma para Pessoas Neurodivergentes</title>
+<meta name="description" content="EcoConnect conecta pessoas neurodivergentes (TEA, TDAH, Dislexia) com profissionais e organizações especializadas. Acompanhe seu progresso, agende consultas e alcance seus objetivos.">
+<meta name="keywords" content="neurodivergente, TEA, TDAH, dislexia, autismo, psicólogo, terapeuta, organizações, acompanhamento, saúde mental">
+<meta name="author" content="EcoConnect">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#038554">
+<meta name="color-scheme" content="light dark">
+
+<!-- ── Canonical ── -->
+<link rel="canonical" href="https://ecoconnect.app">
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ecoconnect.app">
+<meta property="og:site_name" content="EcoConnect">
+<meta property="og:title" content="EcoConnect — Plataforma para Pessoas Neurodivergentes">
+<meta property="og:description" content="Conectando pessoas neurodivergentes a profissionais e organizações especializadas. Acompanhamento personalizado, objetivos e progresso gamificado.">
+<meta property="og:image" content="https://ecoconnect.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="EcoConnect - Plataforma para Neurodivergentes">
+<meta property="og:locale" content="pt_BR">
+
+<!-- ── Twitter Card ── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ecoconnect">
+<meta name="twitter:title" content="EcoConnect — Plataforma para Pessoas Neurodivergentes">
+<meta name="twitter:description" content="Conectando pessoas neurodivergentes a profissionais especializados. Acompanhamento personalizado e objetivos gamificados.">
+<meta name="twitter:image" content="https://ecoconnect.app/og-image.png">
+
+<!-- ── Favicon ── -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23038554'/><text y='.9em' font-size='75' x='12'>🌿</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23038554'/><text y='.9em' font-size='75' x='12'>🌿</text></svg>">
+
+<!-- ── Structured Data (Schema.org) ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "EcoConnect",
+  "url": "https://ecoconnect.app",
+  "description": "Plataforma que conecta pessoas neurodivergentes a profissionais e organizações especializadas",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "pt-BR",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "BRL"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "EcoConnect",
+    "url": "https://ecoconnect.app"
+  }
+}
+</script>
+
+<!-- ── Fonts ── -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g9:#005227;--g7:#038554;--g5:#03bb85;--g3:#68ddbd;--g1:#a4fff7;
+  --dk:#08120d;--dk2:#0d1f18;
+  --sf:#f2f9f5;--sf2:#e6f4ec;--bd:#cde8d8;
+  --tx:#071409;--mu:#4d7464;--mu2:#85a896;
+  --r2:20px;--sh:0 1px 12px rgba(0,82,39,.07);--sh2:0 6px 32px rgba(0,82,39,.12);
+  --tr:.2s cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--sf);color:var(--tx);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;outline:none}
+input,textarea,select{font-family:'DM Sans',sans-serif;outline:none}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--bd);border-radius:2px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scIn{from{opacity:0;transform:scale(.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes xpGrow{from{width:0}to{width:var(--xw,60%)}}
+@keyframes toast{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(3,187,133,.28)}50%{box-shadow:0 0 0 10px rgba(3,187,133,0)}}
+@keyframes checkBounce{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+@keyframes shimmer{0%{left:-100%}100%{left:100%}}
+@keyframes ripple{to{transform:scale(3);opacity:0}}
+@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+
+.au{animation:fadeUp .38s cubic-bezier(.22,1,.36,1) both}
+.au:nth-child(1){animation-delay:.04s}.au:nth-child(2){animation-delay:.09s}
+.au:nth-child(3){animation-delay:.14s}.au:nth-child(4){animation-delay:.19s}
+.au:nth-child(5){animation-delay:.24s}.au:nth-child(6){animation-delay:.29s}
+
+.sc{display:none;min-height:100vh;flex-direction:column}
+.sc.on{display:flex;animation:fadeIn .25s ease}
+.spin-el{width:var(--sz,20px);height:var(--sz,20px);border:2px solid rgba(3,187,133,.2);border-top-color:var(--g5);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+.spin-el.dk{border-color:rgba(255,255,255,.12);border-top-color:rgba(255,255,255,.6)}
+
+/* ── LOGIN ── */
+#sc-login{background:linear-gradient(160deg,#060f09 0%,#0d2518 40%,#0b3d20 80%);align-items:center;justify-content:center;padding:clamp(20px,5vw,48px) 20px;position:relative;overflow:hidden}
+.lg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(3,187,133,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(3,187,133,.035) 1px,transparent 1px);background-size:52px 52px}
+.lg-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.28}
+.lg-wrap{width:100%;max-width:460px;position:relative;z-index:1;animation:fadeUp .5s cubic-bezier(.22,1,.36,1)}
+.lg-mark{width:68px;height:68px;border-radius:22px;background:linear-gradient(135deg,var(--g7),var(--g5));display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 18px;box-shadow:0 0 0 14px rgba(3,187,133,.08),0 0 0 28px rgba(3,187,133,.04);animation:glow 3.5s ease infinite}
+.lg-title{font-family:'Instrument Serif',serif;font-size:clamp(34px,8vw,44px);color:#fff;letter-spacing:-.5px;line-height:1}
+.lg-sub{font-size:13px;color:rgba(255,255,255,.42);margin-top:8px;line-height:1.65;max-width:300px;margin-left:auto;margin-right:auto}
+.lg-card{border-radius:26px;padding:clamp(22px,4vw,30px);background:rgba(255,255,255,.042);border:1px solid rgba(3,187,133,.16);backdrop-filter:blur(24px);box-shadow:0 32px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05)}
+.mode-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:14px;cursor:pointer;background:rgba(255,255,255,.045);border:1px solid rgba(3,187,133,.13);margin-bottom:22px;transition:all var(--tr);user-select:none}
+.mode-row:hover{background:rgba(255,255,255,.075);border-color:rgba(3,187,133,.27)}
+.mode-nm{font-size:12px;font-weight:700;color:var(--g3);text-transform:uppercase;letter-spacing:.6px}
+.mode-dc{font-size:11px;color:rgba(255,255,255,.33);margin-top:2px}
+.mode-sw{width:50px;height:27px;border-radius:14px;display:flex;align-items:center;padding:3px;transition:all .3s}
+.mode-sw.on{background:var(--g5);justify-content:flex-end}
+.mode-sw:not(.on){background:rgba(255,255,255,.1);justify-content:flex-start}
+.mode-knob{width:21px;height:21px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.22)}
+.pro-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(3,187,133,.11);border:1px solid rgba(3,187,133,.24);border-radius:30px;padding:5px 14px;font-size:11px;color:var(--g3);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:18px}
+.tab-row{display:flex;background:rgba(255,255,255,.055);border-radius:13px;padding:4px;margin-bottom:22px}
+.tab-row button{flex:1;padding:9px;border-radius:10px;font-size:13px;font-weight:600;background:transparent;color:rgba(255,255,255,.38);transition:all .22s}
+.tab-row button.on{background:rgba(3,187,133,.18);color:var(--g3)}
+.lh{font-family:'Instrument Serif',serif;font-size:22px;color:#fff;margin:0 0 4px}
+.ls{font-size:13px;color:rgba(255,255,255,.38);margin-bottom:22px}
+.fd{margin-bottom:14px}
+.fd label{display:block;font-size:10px;font-weight:700;color:rgba(164,255,247,.48);text-transform:uppercase;letter-spacing:.9px;margin-bottom:7px}
+.fd label .req{color:rgba(220,100,100,.8);margin-left:2px}
+.fd input,.fd select,.fd textarea{width:100%;padding:13px 15px;background:rgba(255,255,255,.055);border:1.5px solid rgba(3,187,133,.18);border-radius:11px;font-size:14px;color:#fff;transition:border-color .2s,box-shadow .2s}
+.fd input::placeholder{color:rgba(255,255,255,.22)}
+.fd input:focus,.fd textarea:focus{border-color:var(--g5);box-shadow:0 0 0 3px rgba(3,187,133,.15);outline:none}
+.fd input.err-field{border-color:rgba(220,60,60,.6);box-shadow:0 0 0 3px rgba(220,60,60,.1)}
+.fd select option{background:#0d1f18}
+.pw-hint{font-size:11px;color:rgba(255,255,255,.28);margin-top:5px;line-height:1.5}
+.invite-hint{font-size:11px;color:rgba(255,255,255,.28);margin-top:5px}
+.lg-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--g9) 0%,var(--g7) 60%,var(--g5) 100%);border:none;border-radius:13px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:all var(--tr);display:flex;align-items:center;justify-content:center;gap:9px;position:relative;overflow:hidden}
+.lg-btn:hover{transform:translateY(-1px);box-shadow:0 10px 32px rgba(3,187,133,.35)}
+.lg-btn:disabled{opacity:.65;cursor:not-allowed;transform:none!important;pointer-events:none}
+.err-box{background:rgba(220,60,60,.1);border:1px solid rgba(220,60,60,.25);border-radius:9px;padding:10px 14px;font-size:13px;color:#f08080;margin-bottom:14px;animation:shake .3s ease}
+.succ-box-light{background:rgba(3,187,133,.1);border:1px solid rgba(3,187,133,.25);border-radius:9px;padding:10px 14px;font-size:13px;color:var(--g3);margin-bottom:14px}
+.forgot{text-align:center;margin-top:14px;font-size:12px;color:var(--g5);cursor:pointer;opacity:.65}
+.forgot:hover{opacity:1}
+.alt-link{text-align:center;margin-top:16px;font-size:12px;color:rgba(255,255,255,.3)}
+.alt-link a{color:var(--g5);cursor:pointer;text-decoration:underline}
+
+/* ── NAV ── */
+.tnav{height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,36px);position:sticky;top:0;z-index:200;border-bottom:1px solid var(--bd);background:rgba(242,249,245,.9);backdrop-filter:blur(18px);transition:box-shadow var(--tr)}
+.tnav.dk{background:rgba(8,18,13,.9);border-bottom-color:rgba(3,187,133,.1)}
+.tnav.scrolled{box-shadow:0 2px 20px rgba(0,82,39,.12)}
+.tnav.dk.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.35)}
+.nav-brand{display:flex;align-items:center;gap:9px;cursor:pointer;flex-shrink:0}
+.nav-icon{width:33px;height:33px;border-radius:10px;background:linear-gradient(135deg,var(--g7),var(--g5));display:flex;align-items:center;justify-content:center;font-size:16px}
+.nav-name{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;letter-spacing:-.3px;color:var(--g7)}
+.tnav.dk .nav-name{color:var(--g5)}
+.admin-pill{background:rgba(3,187,133,.13);border:1px solid rgba(3,187,133,.22);border-radius:20px;padding:3px 10px;font-size:10px;color:var(--g3);font-weight:700;text-transform:uppercase}
+.nav-tabs{display:flex;gap:2px}
+.nt{padding:7px 13px;border-radius:9px;background:transparent;font-size:13px;font-weight:500;color:var(--mu);cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:5px}
+.nt:hover{background:var(--sf2);color:var(--g7)}
+.nt.on{background:rgba(3,187,133,.11);color:var(--g7);font-weight:700}
+.tnav.dk .nt{color:rgba(255,255,255,.38)}
+.tnav.dk .nt:hover{background:rgba(3,187,133,.08);color:var(--g3)}
+.tnav.dk .nt.on{background:rgba(3,187,133,.14);color:var(--g3);font-weight:700}
+.nav-r{display:flex;align-items:center;gap:10px}
+.nav-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--g3),var(--g5));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--g9);cursor:pointer;font-family:'Syne',sans-serif}
+
+.pw{flex:1;max-width:980px;width:100%;margin:0 auto;padding:0 clamp(14px,3vw,28px) 96px}
+.pw.wide{max-width:1200px}
+.bnav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(242,249,245,.95);border-top:1px solid var(--bd);backdrop-filter:blur(18px);padding:8px 0 max(16px,env(safe-area-inset-bottom))}
+.bnav.dk{background:rgba(8,18,13,.95);border-top-color:rgba(3,187,133,.1)}
+.bnav-inner{display:flex;justify-content:space-around}
+.bnb{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:4px 10px;min-width:50px}
+.bnb-i{font-size:21px;line-height:1;transition:transform .2s}
+.bnb.on .bnb-i{filter:drop-shadow(0 0 6px rgba(3,187,133,.5))}
+.bnb:hover .bnb-i{transform:translateY(-2px)}
+.bnb-l{font-size:9px;font-weight:500;color:var(--mu);font-family:'DM Sans',sans-serif}
+.bnb.on .bnb-l{color:var(--g7);font-weight:700}
+.bnav.dk .bnb .bnb-l{color:rgba(255,255,255,.3)}
+.bnav.dk .bnb.on .bnb-l{color:var(--g3)}
+.bnb-dot{width:4px;height:4px;border-radius:50%;background:var(--g5)}
+.tp{display:none}
+.tp.on{display:block;animation:fadeUp .32s cubic-bezier(.22,1,.36,1) both}
+
+/* ── ATOMS ── */
+.hero{border-radius:0 0 28px 28px;padding:clamp(24px,4vw,34px) clamp(18px,3vw,26px) clamp(30px,5vw,42px);margin-bottom:clamp(20px,4vw,28px);margin-left:calc(-1 * clamp(14px,3vw,28px));margin-right:calc(-1 * clamp(14px,3vw,28px));position:relative;overflow:hidden}
+.hero-g{background:linear-gradient(135deg,#00391a 0%,var(--g7) 100%)}
+.hero-dk{background:linear-gradient(135deg,var(--dk) 0%,#0b3322 100%)}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;background:rgba(164,255,247,.07)}
+.hero-g::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 40px,rgba(255,255,255,.018) 40px,rgba(255,255,255,.018) 41px);pointer-events:none}
+
+.card{background:#fff;border:1px solid var(--bd);border-radius:var(--r2);padding:18px;box-shadow:var(--sh);transition:all var(--tr)}
+.card.dk{background:rgba(255,255,255,.04);border-color:rgba(3,187,133,.11);box-shadow:none}
+.card.cl{cursor:pointer}
+.card.cl:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.card.dk.cl:hover{background:rgba(255,255,255,.07);border-color:rgba(3,187,133,.22)}
+
+.st{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}
+.st h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--tx)}
+.st.dk h3{color:rgba(255,255,255,.85)}
+
+.bg{padding:3px 11px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.bg-g{background:rgba(3,187,133,.12);color:var(--g7)}
+.bg-t{background:rgba(104,221,189,.15);color:#02a070}
+.bg-b{background:rgba(60,120,255,.12);color:#3060c0}
+.bg-o{background:rgba(255,160,60,.13);color:#b06010}
+.bg-r{background:rgba(220,60,60,.1);color:#c04040}
+.bg-d{background:rgba(3,187,133,.15);color:var(--g3)}
+.bg-pur{background:rgba(139,92,246,.12);color:#7c3aed}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:10px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all var(--tr);border:none;white-space:nowrap;position:relative;overflow:hidden}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.5;cursor:not-allowed;pointer-events:none}
+.btn-p{background:linear-gradient(135deg,var(--g9),var(--g7));color:#fff;box-shadow:0 2px 8px rgba(0,82,39,.2)}
+.btn-p:hover{opacity:.88;box-shadow:0 4px 18px rgba(3,187,133,.3);transform:translateY(-1px)}
+.btn-o{background:transparent;color:var(--g7);border:1.5px solid var(--g5)}
+.btn-o:hover{background:rgba(3,187,133,.06)}
+.btn-gh{background:transparent;color:var(--g5)}
+.btn-gh:hover{color:var(--g7)}
+.btn-dr{background:rgba(220,60,60,.08);color:#c04040;border:1px solid rgba(220,60,60,.2)}
+.btn-dr:hover{background:rgba(220,60,60,.14)}
+.btn-dk{background:rgba(3,187,133,.09);color:var(--g3);border:1px solid rgba(3,187,133,.22)}
+.btn-dk:hover{background:rgba(3,187,133,.16)}
+.btn-warn{background:rgba(255,193,7,.1);color:#b07800;border:1px solid rgba(255,193,7,.3)}
+.btn-warn:hover{background:rgba(255,193,7,.18)}
+.sm{padding:7px 14px;font-size:12px;border-radius:9px}
+.md{padding:11px 21px;font-size:14px}
+.lg{padding:15px 26px;font-size:15px}
+.fw{width:100%}
+.av{border-radius:50%;background:linear-gradient(135deg,var(--g3),var(--g5));display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--g9);flex-shrink:0;font-family:'Syne',sans-serif}
+
+.xh{display:flex;justify-content:space-between;margin-bottom:6px}
+.xh span{font-size:12px;color:rgba(255,255,255,.52)}
+.xh strong{font-size:12px;font-weight:700;color:var(--g3)}
+.xh.lt span{color:var(--mu)}.xh.lt strong{color:var(--g7)}
+.xt{height:9px;background:rgba(255,255,255,.1);border-radius:5px;overflow:hidden}
+.xt.lt{background:var(--sf2)}
+.xf{height:100%;background:linear-gradient(90deg,var(--g7),var(--g3));border-radius:5px;animation:xpGrow 1.1s cubic-bezier(.22,1,.36,1) both .3s;position:relative;overflow:hidden}
+.xf::after{content:'';position:absolute;top:0;bottom:0;width:60%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);animation:shimmer 2.5s ease infinite 1.5s}
+.xs{font-size:10px;color:rgba(255,255,255,.26);margin-top:5px}
+.xs.lt{color:var(--mu2)}
+
+.tgl{width:46px;height:26px;border-radius:13px;display:flex;align-items:center;padding:3px;cursor:pointer;transition:background .25s;flex-shrink:0}
+.tgl.on{background:var(--g5);justify-content:flex-end}
+.tgl:not(.on){background:rgba(255,255,255,.12);justify-content:flex-start}
+.tgl-k{width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.2)}
+
+.chips{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:16px;flex-wrap:wrap}
+.chip{padding:6px 15px;border-radius:20px;font-size:12px;font-weight:600;background:#fff;border:1.5px solid var(--bd);color:var(--mu);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .16s}
+.chip:hover{border-color:var(--g5);color:var(--g7)}
+.chip.on{background:var(--g5);border-color:var(--g5);color:#fff;box-shadow:0 2px 10px rgba(3,187,133,.35)}
+.chip.dk{background:rgba(255,255,255,.05);border-color:rgba(3,187,133,.15);color:rgba(255,255,255,.42)}
+.chip.dk.on{background:rgba(3,187,133,.2);border-color:var(--g5);color:var(--g3)}
+
+.srch{display:flex;align-items:center;gap:9px;background:#fff;border:1.5px solid var(--bd);border-radius:12px;padding:10px 15px;margin-bottom:14px;transition:border-color .2s}
+.srch:focus-within{border-color:var(--g5);box-shadow:0 0 0 3px rgba(3,187,133,.1)}
+.srch.dk{background:rgba(255,255,255,.05);border-color:rgba(3,187,133,.17)}
+.srch input{border:none;background:transparent;font-size:14px;color:var(--tx);flex:1;min-width:0}
+.srch.dk input{color:rgba(255,255,255,.78)}
+.srch input::placeholder{color:var(--mu2)}
+
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:16px}
+.g3{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px}
+
+.lf{margin-bottom:14px}
+.lf label{display:block;font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.9px;margin-bottom:7px}
+.lf input,.lf textarea,.lf select{width:100%;padding:12px 14px;background:var(--sf);border:1.5px solid var(--bd);border-radius:10px;font-size:14px;color:var(--tx);transition:border-color .2s}
+.lf input:focus,.lf textarea:focus{border-color:var(--g5);box-shadow:0 0 0 3px rgba(3,187,133,.1);outline:none}
+.lf textarea{resize:vertical;min-height:80px}
+.dfd{margin-bottom:14px}
+.dfd label{display:block;font-size:10px;font-weight:700;color:rgba(164,255,247,.46);text-transform:uppercase;letter-spacing:.9px;margin-bottom:7px}
+.dfd input,.dfd textarea,.dfd select{width:100%;padding:12px 14px;background:rgba(255,255,255,.055);border:1.5px solid rgba(3,187,133,.18);border-radius:10px;font-size:14px;color:#fff;transition:border-color .2s}
+.dfd input::placeholder,.dfd textarea::placeholder{color:rgba(255,255,255,.2)}
+.dfd input:focus,.dfd textarea:focus{border-color:var(--g5);box-shadow:0 0 0 3px rgba(3,187,133,.15);outline:none}
+.dfd select option{background:#0d1f18}
+
+/* ── MODAL ── */
+.ov{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.62);backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:20px}
+.ov.on{display:flex;animation:fadeIn .22s ease}
+.mbox{background:var(--dk2);border:1px solid rgba(3,187,133,.16);border-radius:24px;padding:26px;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;box-shadow:0 30px 90px rgba(0,0,0,.55);animation:scIn .3s cubic-bezier(.22,1,.36,1)}
+.mbox.lt{background:#fff;border-color:var(--bd)}
+.mhd{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.mtt{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#fff}
+.mbox.lt .mtt{color:var(--tx)}
+.mcl{background:none;border:none;color:rgba(255,255,255,.32);font-size:22px;cursor:pointer;line-height:1;transition:color .15s}
+.mcl:hover{color:rgba(255,255,255,.7)}
+.mbox.lt .mcl{color:var(--mu)}
+.mbox::-webkit-scrollbar{width:4px}.mbox::-webkit-scrollbar-thumb{background:rgba(3,187,133,.22);border-radius:2px}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:82px;left:50%;transform:translateX(-50%);border-radius:30px;padding:11px 22px;font-size:13px;font-weight:600;z-index:999;display:none;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.42)}
+#toast.ok{background:var(--dk2);color:var(--g3);border:1px solid rgba(3,187,133,.2)}
+#toast.err{background:#2d0a0a;color:#f08080;border:1px solid rgba(220,60,60,.3)}
+
+/* ── PATIENT ── */
+.hw-g{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:4px}
+.hw-n{font-family:'Instrument Serif',serif;font-size:clamp(22px,5vw,28px);color:#fff;margin-bottom:4px}
+.hw-s{font-size:12px;color:var(--g3);margin-bottom:20px}
+.xp-hero{background:rgba(255,255,255,.11);border-radius:14px;padding:14px 16px}
+.obj-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--sf)}
+.obj-row:last-child{border-bottom:none}
+.obj-ck{width:19px;height:19px;border-radius:50%;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.obj-ck.dn{background:var(--g5);border:2px solid var(--g5)}
+.obj-ck.dn::after{content:'✓';color:#fff;font-size:10px;font-weight:700}
+.obj-ck.td{background:transparent;border:2px solid var(--sf2)}
+.tips-card{background:linear-gradient(135deg,rgba(3,187,133,.06),rgba(3,187,133,.02));border:1px solid rgba(3,187,133,.18);border-radius:12px;padding:14px;margin-top:8px}
+.tips-card.dk{background:rgba(3,187,133,.06);border-color:rgba(3,187,133,.18)}
+.tips-title{font-size:12px;font-weight:700;color:var(--g7);margin-bottom:8px}
+.tips-card.dk .tips-title{color:var(--g3)}
+.tips-ul{list-style:none}
+.tips-ul li{font-size:12px;color:var(--mu);padding:4px 0 4px 16px;position:relative;line-height:1.5}
+.tips-card.dk .tips-ul li{color:rgba(255,255,255,.5)}
+.tips-ul li::before{content:'→';position:absolute;left:0;color:var(--g5);font-size:11px;top:4px}
+.tips-motiv{font-size:12px;color:var(--g7);font-weight:600;margin-top:8px;padding-top:8px;border-top:1px solid rgba(3,187,133,.15)}
+.tips-card.dk .tips-motiv{color:var(--g3)}
+
+.org-ic{width:52px;height:52px;border-radius:15px;background:linear-gradient(135deg,var(--g3),var(--g7));display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.org-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.org-tag{padding:3px 9px;border-radius:20px;background:var(--sf);font-size:11px;color:var(--mu)}
+.pro-mini{display:flex;align-items:flex-start;gap:10px;padding:10px;background:var(--sf);border-radius:10px;margin-top:8px;transition:background .18s}
+.pro-mini.dk{background:rgba(255,255,255,.04);border:1px solid rgba(3,187,133,.1)}
+.pro-mini-name{font-size:13px;font-weight:700;color:var(--tx)}
+.pro-mini.dk .pro-mini-name{color:rgba(255,255,255,.88)}
+.pro-mini-spec{font-size:11px;color:var(--mu);margin-top:2px}
+
+.prof-hero{background:linear-gradient(135deg,#003d1e,var(--g7));border-radius:24px;padding:28px 22px;text-align:center;margin-bottom:20px}
+.prof-stats{display:flex;justify-content:center;gap:28px;margin-top:18px}
+.pn{font-family:'Syne',sans-serif;font-size:20px;color:#fff;font-weight:800}
+.pl{font-size:10px;color:rgba(255,255,255,.38);margin-top:2px}
+.menu-it{display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:14px;cursor:pointer;border:1px solid var(--bd);background:#fff;margin-bottom:8px;transition:all var(--tr)}
+.menu-it:hover{background:var(--sf);box-shadow:var(--sh)}
+.menu-ico{width:38px;height:38px;border-radius:10px;background:var(--sf);display:flex;align-items:center;justify-content:center;font-size:18px}
+.menu-lb{flex:1;font-size:14px;font-weight:500;color:var(--tx)}
+.menu-it.dng{border-color:rgba(220,60,60,.17)}
+.menu-it.dng .menu-lb{color:#c04040}
+.ci-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:22px}
+.ci-c{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:20px 14px;text-align:center;box-shadow:var(--sh);transition:all var(--tr)}
+.ci-c:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.ci-i{font-size:28px;margin-bottom:9px}
+.ci-t{font-weight:700;font-size:14px}
+.ci-s{font-size:12px;color:var(--mu);margin-top:4px}
+.ab-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;margin-top:20px;padding-top:18px;border-top:1px solid var(--bd)}
+.ab-n{font-family:'Syne',sans-serif;font-size:25px;font-weight:800;color:var(--g7)}
+.ab-l{font-size:11px;color:var(--mu)}
+
+/* ── ADMIN ── */
+.stat-g{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+.stat-c{background:rgba(255,255,255,.065);border:1px solid rgba(3,187,133,.12);border-radius:15px;padding:14px 16px;transition:all .2s;cursor:default}
+.stat-c:hover{border-color:rgba(3,187,133,.28);background:rgba(255,255,255,.09);transform:translateY(-2px)}
+.stat-n{font-family:'Syne',sans-serif;font-size:30px;color:var(--g3);font-weight:800;animation:countUp .6s cubic-bezier(.22,1,.36,1) both}
+.stat-c:nth-child(1) .stat-n{animation-delay:.1s}.stat-c:nth-child(2) .stat-n{animation-delay:.18s}
+.stat-c:nth-child(3) .stat-n{animation-delay:.26s}.stat-c:nth-child(4) .stat-n{animation-delay:.34s}
+.stat-l{font-size:11px;color:rgba(255,255,255,.36);margin-top:3px}
+.pat-row{display:flex;align-items:center;gap:13px;padding:14px 18px;border-bottom:1px solid rgba(3,187,133,.06);cursor:pointer;transition:background .18s}
+.pat-row:hover{background:rgba(3,187,133,.045)}
+.pat-row:last-child{border-bottom:none}
+.log-it{background:rgba(255,255,255,.04);border:1px solid rgba(3,187,133,.1);border-radius:14px;padding:14px 16px;margin-bottom:10px;transition:border-color .2s,background .2s}
+.log-it:hover{border-color:rgba(3,187,133,.22);background:rgba(255,255,255,.06)}
+.log-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.log-tp{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(3,187,133,.1);color:var(--g5)}
+.log-dt{font-size:11px;color:rgba(255,255,255,.3)}
+.log-tt{font-weight:600;font-size:13px;color:rgba(255,255,255,.85);margin-bottom:6px}
+.log-ct{font-size:13px;color:rgba(255,255,255,.5);line-height:1.68}
+.log-vs{font-size:11px;color:rgba(255,255,255,.2);margin-top:9px}
+.chk{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(3,187,133,.1);border-radius:14px;margin-bottom:10px;transition:opacity .2s,border-color .2s}
+.chk.dn{opacity:.7}
+.chk:hover{border-color:rgba(3,187,133,.22)}
+.chk-c{width:23px;height:23px;border-radius:50%;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .22s}
+.chk-c.dn{background:var(--g5);border:2px solid var(--g5)}
+.chk-c.dn::after{content:'✓';color:#fff;font-size:12px;font-weight:700;animation:checkBounce .3s cubic-bezier(.22,1,.36,1)}
+.chk-c.td{background:transparent;border:2px solid rgba(3,187,133,.32)}
+.chk-c.td:hover{border-color:rgba(3,187,133,.65);background:rgba(3,187,133,.07)}
+.chk-tx{font-size:13px;color:rgba(255,255,255,.85);font-weight:500}
+.chk.dn .chk-tx{text-decoration:line-through;color:rgba(255,255,255,.35)}
+.chk-mt{font-size:11px;color:rgba(255,255,255,.28);margin-top:4px}
+.add-btn{width:100%;padding:13px;border:2px dashed rgba(3,187,133,.2);border-radius:14px;background:transparent;color:rgba(3,187,133,.58);font-size:13px;font-weight:600;cursor:pointer;transition:all var(--tr)}
+.add-btn:hover{border-color:rgba(3,187,133,.4);color:var(--g5)}
+.pat-chips{display:flex;gap:8px;overflow-x:auto;margin-bottom:18px;padding-bottom:4px}
+.pc{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:20px;cursor:pointer;flex-shrink:0;border:none;background:rgba(255,255,255,.05);outline:1.5px solid rgba(3,187,133,.13);transition:all .18s}
+.pc.on{background:rgba(3,187,133,.16);outline-color:var(--g5)}
+.pc span{font-size:12px;font-weight:600;color:rgba(255,255,255,.42);white-space:nowrap;font-family:'DM Sans',sans-serif}
+.pc.on span{color:var(--g3)}
+.adm-mi{display:flex;align-items:center;gap:13px;padding:14px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(3,187,133,.07);border-radius:14px;margin-bottom:8px;cursor:pointer;transition:background .18s}
+.adm-mi:hover{background:rgba(255,255,255,.07)}
+.adm-ic{width:38px;height:38px;border-radius:10px;background:rgba(3,187,133,.1);display:flex;align-items:center;justify-content:center;font-size:18px}
+.adm-lb{flex:1;font-size:14px;font-weight:500;color:rgba(255,255,255,.82)}
+.adm-mi.dng{border-color:rgba(220,60,60,.17)}
+.adm-mi.dng .adm-lb{color:#df7070}
+
+/* ── INSTITUTION MODE ── */
+.inst-mode-card{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.22);border-radius:16px;padding:18px;margin-bottom:16px}
+.inst-mode-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.inst-mode-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.88)}
+.inst-mode-desc{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
+.inst-mode-badge{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700}
+.inst-mode-badge.on{background:rgba(139,92,246,.2);color:#c4b5fd}
+.inst-mode-badge.off{background:rgba(255,255,255,.06);color:rgba(255,255,255,.35)}
+.inst-card{background:rgba(255,255,255,.04);border:1px solid rgba(3,187,133,.12);border-radius:16px;padding:16px;margin-bottom:12px;transition:border-color .2s}
+.inst-card:hover{border-color:rgba(3,187,133,.24)}
+.inst-card-hd{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.inst-emoji{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--g3),var(--g7));display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.inst-member-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(3,187,133,.06)}
+.inst-member-row:last-child{border-bottom:none}
+.limit-bar{height:5px;background:rgba(255,255,255,.08);border-radius:3px;margin-top:8px;overflow:hidden}
+.limit-fill{height:100%;background:linear-gradient(90deg,var(--g7),var(--g5));border-radius:3px;transition:width .5s ease}
+
+/* ── BOOKING ── */
+.tslots{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:8px;margin-bottom:16px}
+.tslot{padding:10px;border-radius:10px;text-align:center;border:1.5px solid rgba(3,187,133,.17);background:rgba(255,255,255,.04);color:rgba(255,255,255,.58);font-size:13px;font-weight:500;cursor:pointer;transition:all .18s}
+.tslot.on{background:rgba(3,187,133,.18);border-color:var(--g5);color:var(--g3);font-weight:700;box-shadow:0 2px 12px rgba(3,187,133,.3)}
+.tslot:hover:not(.on){background:rgba(255,255,255,.07)}
+.succ{text-align:center;padding:22px 0}
+.succ-ic{font-size:52px;display:block;margin-bottom:14px;animation:checkBounce .6s cubic-bezier(.22,1,.36,1) both .1s}
+.succ-t{font-family:'Instrument Serif',serif;font-size:24px;color:#fff;margin-bottom:8px}
+.succ-s{font-size:13px;color:rgba(255,255,255,.42);margin-bottom:24px}
+.succ-bx{background:rgba(255,255,255,.05);border:1px solid rgba(3,187,133,.13);border-radius:14px;padding:16px;margin-bottom:20px;text-align:left}
+.vis-row{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.05);border:1px solid rgba(3,187,133,.11);border-radius:11px;padding:13px 15px;margin-bottom:15px}
+.vis-lb{font-size:13px;color:rgba(255,255,255,.82);font-weight:500}
+.vis-dc{font-size:11px;color:rgba(255,255,255,.28);margin-top:2px}
+.page-ld{display:flex;align-items:center;justify-content:center;padding:50px 20px;gap:12px}
+.page-ld p{font-size:13px;color:var(--mu)}
+.page-ld.dk p{color:rgba(255,255,255,.35)}
+.empty-state{text-align:center;padding:48px 20px}
+.empty-state .ei{font-size:40px;margin-bottom:12px}
+.empty-state h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:6px}
+.empty-state p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.6}
+
+@media(max-width:768px){.nav-tabs,.hide-m{display:none!important}.bnav{display:block!important}}
+@media(min-width:769px){.bnav{display:none!important}}
+
+/* ── Skip navigation (accessibility) ── */
+.skip-nav{position:absolute;top:-100px;left:0;background:var(--g7);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-weight:700;font-size:14px;text-decoration:none;z-index:9999;transition:top .2s}
+.skip-nav:focus{top:0}
+
+/* ── Focus visible (accessibility) ── */
+:focus-visible{outline:2px solid var(--g5);outline-offset:2px;border-radius:4px}
+button:focus-visible,a:focus-visible{outline:2px solid var(--g5);outline-offset:2px}
+
+/* ── Reduced motion ── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* ── High contrast ── */
+@media(prefers-contrast:high){
+  .card{border-width:2px}
+  .btn{border-width:2px}
+}
+
+/* ── Print ── */
+@media print{
+  .tnav,.bnav,.btn{display:none!important}
+  body{background:#fff;color:#000}
+  .card{box-shadow:none;border:1px solid #ccc}
+}
+
+</style>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+<a href="#main-content" class="skip-nav" aria-label="Pular para conteúdo principal">Pular para o conteúdo</a>
+<div id="toast"></div>
+<div class="ov" id="ov" onclick="closeMdl()">
+  <div class="mbox" id="mbox" role="dialog" aria-modal="true" aria-labelledby="mtt" onclick="event.stopPropagation()">
+    <div class="mhd"><h3 class="mtt" id="mtt"></h3><button class="mcl" onclick="closeMdl()" aria-label="Fechar modal">✕</button></div>
+    <div id="mbd"></div>
+  </div>
+</div>
+
+<!-- ═══ LOGIN ═══ -->
+<div class="sc on" id="sc-login">
+  <div class="lg-grid"></div>
+  <div class="lg-blob" style="width:520px;height:520px;background:radial-gradient(circle,rgba(3,187,133,.2),transparent 70%);top:-120px;right:-160px;position:absolute"></div>
+  <div class="lg-blob" style="width:420px;height:420px;background:radial-gradient(circle,rgba(0,82,39,.28),transparent 70%);bottom:-100px;left:-130px;position:absolute"></div>
+  <div class="lg-wrap">
+    <div style="text-align:center;margin-bottom:36px">
+      <div class="lg-mark">🌿</div>
+      <h1 class="lg-title">EcoConnect</h1>
+      <p class="lg-sub">Conectando pessoas neurodivergentes a organizações especializadas</p>
+    </div>
+    <div class="lg-card">
+      <div class="mode-row" id="mode-row" onclick="toggleMode()">
+        <div><div class="mode-nm" id="mode-nm">👤 Sou Paciente</div><div class="mode-dc" id="mode-dc">Clique para acessar como profissional</div></div>
+        <div class="mode-sw" id="msw"><div class="mode-knob"></div></div>
+      </div>
+      <div id="pro-badge" class="pro-badge" style="display:none">⚕️ Área do Profissional</div>
+      <div class="tab-row" id="tab-row">
+        <button class="on" id="t1" onclick="swTab('login')">Entrar</button>
+        <button id="t2" onclick="swTab('reg')">Criar conta</button>
+      </div>
+      <h2 class="lh" id="lh">Bem-vindo de volta</h2>
+      <p class="ls" id="ls">Acesse sua conta para continuar</p>
+
+      <!-- Register fields (patient) -->
+      <div class="fd" id="fn" style="display:none"><label>Nome completo <span class="req">*</span></label><input type="text" id="i-name" placeholder="Seu nome completo" autocomplete="name"></div>
+      <div class="fd"><label>E-mail <span class="req">*</span></label><input type="email" id="i-email" placeholder="seu@email.com" autocomplete="email"></div>
+      <div class="fd"><label>Senha <span class="req">*</span></label><input type="password" id="i-pass" placeholder="Mínimo 8 caracteres" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <div id="pw-hint-block" style="display:none"><p class="pw-hint">A senha deve ter ao menos 8 caracteres, uma letra maiúscula e um número.</p></div>
+      <div class="fd" id="fc" style="display:none"><label>Condição (opcional)</label><select id="i-cond"><option value="UNSPECIFIED">Prefiro não informar</option><option value="TEA">TEA</option><option value="ADHD">TDAH</option><option value="DYSLEXIA">Dislexia</option><option value="DYSPRAXIA">Dyspraxia</option><option value="OTHER">Outra</option></select></div>
+
+      <!-- Professional-only fields -->
+      <div id="pro-invite-block" style="display:none">
+        <div class="fd"><label>Código de convite <span class="req">*</span></label><input type="text" id="i-invite" placeholder="Código fornecido pelo administrador" autocomplete="off"><p class="invite-hint">Necessário para criar conta profissional. Solicite ao administrador do sistema.</p></div>
+        <div class="fd" id="pro-reg-fields" style="display:none">
+          <label>Especialidade</label><input type="text" id="i-spec" placeholder="Ex: Neuropsicólogo, Terapeuta Ocupacional">
+        </div>
+        <div class="fd" style="display:none" id="pro-crp-field">
+          <label>Registro profissional (CRP, CRN...)</label><input type="text" id="i-crp" placeholder="Ex: CRP 06/123456">
+        </div>
+      </div>
+
+      <div class="err-box" id="lg-err" style="display:none"></div>
+      <div class="succ-box-light" id="lg-ok" style="display:none"></div>
+
+      <button class="lg-btn" id="lgb" onclick="doLogin()">
+        <span id="lgbt">Entrar</span><span id="lgba">→</span>
+      </button>
+
+      <div id="alt-links" style="margin-top:14px">
+        <p class="forgot" id="fgt" onclick="openForgotPassword()">Esqueci minha senha</p>
+        <div id="pro-reg-toggle" class="alt-link" style="display:none">
+          É profissional? <a onclick="swTabPro()">Criar conta profissional</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PATIENT SCREEN ═══ -->
+<div class="sc" id="sc-pat">
+  <nav class="tnav" id="pat-nav" aria-label="Navegação principal">
+    <div class="nav-brand" onclick="goTab('p','home')"><div class="nav-icon">🌱</div><span class="nav-name">EcoConnect</span></div>
+    <div class="nav-tabs">
+      <button class="nt on" data-p="home"    onclick="goTab('p','home')" aria-current="page" aria-label="Início">🏠 Home</button>
+      <button class="nt"    data-p="orgs"    onclick="goTab('p','orgs')">🏢 Organizações</button>
+      <button class="nt"    data-p="apts"    onclick="goTab('p','apts')">📅 Consultas</button>
+      <button class="nt"    data-p="contact" onclick="goTab('p','contact')">💬 Contato</button>
+      <button class="nt"    data-p="pprof"   onclick="goTab('p','pprof')">👤 Perfil</button>
+    </div>
+    <div class="nav-r"><div class="nav-av" id="pat-av">MC</div></div>
+  </nav>
+  <main class="pw" id="main-content" tabindex="-1">
+    <div class="tp on" id="p-home">
+      <div class="hero hero-g"><div class="hero-orb" style="top:-60px;right:-60px;width:210px;height:210px"></div>
+        <p class="hw-g">Olá,</p><h2 class="hw-n" id="pat-hello">Carregando...</h2>
+        <p class="hw-s">Sua jornada de bem-estar continua</p>
+        <div class="xp-hero"><div class="xh"><span>🧩 Progresso</span><strong id="xp-val">⭐ 0 XP</strong></div><div class="xt" style="margin-top:7px"><div class="xf" id="xp-bar" style="--xw:0%"></div></div><div class="xs" id="xp-sub">Nível 1</div></div>
+      </div>
+      <div class="g2">
+        <div><div class="st"><h3>📅 Próximas Consultas</h3><button class="btn btn-gh sm" onclick="goTab('p','apts')">Ver todas</button></div><div id="home-apts"><div class="page-ld"><div class="spin-el"></div></div></div></div>
+        <div><div class="st"><h3>🎯 Seus Objetivos</h3></div><div id="home-objs"><div class="page-ld"><div class="spin-el"></div></div></div></div>
+      </div>
+      <div style="margin-top:22px"><div class="st"><h3>🏢 Organizações para você</h3><button class="btn btn-gh sm" onclick="goTab('p','orgs')">Ver todas</button></div><div class="g3" id="home-orgs"><div class="page-ld"><div class="spin-el"></div></div></div></div>
+    </div>
+
+    <div class="tp" id="p-orgs" style="padding-top:22px">
+      <div class="st"><h3>🏢 Organizações e Institutos</h3></div>
+      <div class="srch"><span style="font-size:15px;opacity:.4">🔍</span><input type="text" id="org-search" placeholder="Buscar por nome ou cidade…" oninput="filterOrgs()"></div>
+      <div class="chips" id="org-chips"><div class="chip on" onclick="chipOrg(this)">Todos</div><div class="chip" onclick="chipOrg(this)">TEA</div><div class="chip" onclick="chipOrg(this)">TDAH</div><div class="chip" onclick="chipOrg(this)">Dislexia</div><div class="chip" onclick="chipOrg(this)">Dyspraxia</div><div class="chip" onclick="chipOrg(this)">Ansiedade</div></div>
+      <div class="g3" id="orgs-grid"><div class="page-ld"><div class="spin-el"></div></div></div>
+    </div>
+
+    <div class="tp" id="p-apts" style="padding-top:22px">
+      <div class="st"><h3>📅 Minhas Consultas</h3></div>
+      <div class="chips"><div class="chip on" onclick="chipSingle(this)">Todas</div><div class="chip" onclick="chipSingle(this)">Agendadas</div><div class="chip" onclick="chipSingle(this)">Concluídas</div><div class="chip" onclick="chipSingle(this)">Canceladas</div></div>
+      <div id="apts-list"><div class="page-ld"><div class="spin-el"></div></div></div>
+    </div>
+
+    <div class="tp" id="p-contact" style="padding-top:22px">
+      <div class="st"><h3>💬 Fale Conosco</h3></div>
+      <div class="ci-grid"><div class="ci-c au"><div class="ci-i">📧</div><div class="ci-t">E-mail</div><div class="ci-s">contato@ecoconnect.com.br</div></div><div class="ci-c au"><div class="ci-i">📞</div><div class="ci-t">Telefone</div><div class="ci-s">(11) 3000-0000</div></div><div class="ci-c au"><div class="ci-i">🕐</div><div class="ci-t">Horário</div><div class="ci-s">Seg–Sex · 8h–18h</div></div></div>
+      <div class="st"><h3>Enviar Mensagem</h3></div>
+      <div class="card au"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 14px"><div class="lf"><label>Nome</label><input type="text" id="ct-name" placeholder="Seu nome"></div><div class="lf"><label>E-mail</label><input type="email" id="ct-email" placeholder="seu@email.com"></div></div><div class="lf"><label>Mensagem</label><textarea id="ct-msg" rows="4" placeholder="Como podemos ajudar?"></textarea></div><button class="btn btn-p md fw" onclick="sendContact()">Enviar Mensagem</button></div>
+      <div style="height:22px"></div>
+      <div class="st"><h3>ℹ️ Sobre o EcoConnect</h3></div>
+      <div class="card au"><div style="font-family:'Syne',sans-serif;font-size:19px;font-weight:700;color:var(--g7);margin-bottom:12px">🌿 Nossa Missão</div><p style="font-size:14px;color:var(--mu);line-height:1.78;margin-bottom:12px">O EcoConnect conecta pessoas neurodivergentes com profissionais e organizações especializadas em seu atendimento.</p><p style="font-size:14px;color:var(--mu);line-height:1.78">Profissionais acompanham o progresso em tempo real, com objetivos personalizados, dicas inteligentes e XP gamificado.</p></div>
+    </div>
+
+    <div class="tp" id="p-pprof" style="padding-top:22px">
+      <div class="prof-hero au"><div class="av" id="pprof-av" style="width:76px;height:76px;font-size:26px;margin:0 auto 14px;border:4px solid rgba(255,255,255,.22)">?</div><div style="font-family:'Instrument Serif',serif;font-size:22px;color:#fff" id="pprof-name">—</div><div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:4px" id="pprof-cond">EcoConnect</div><div class="prof-stats"><div><div class="pn" id="pprof-xp">⭐0</div><div class="pl">XP Total</div></div><div><div class="pn" id="pprof-level">Nv.1</div><div class="pl">Nível</div></div><div><div class="pn" id="pprof-apts">—</div><div class="pl">Consultas</div></div></div></div>
+      <div class="card au" style="margin-bottom:16px"><div style="font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.9px;margin-bottom:12px">Nível de Progresso</div><div class="xh lt" id="pprof-xh"><span>⭐ 0 XP</span><strong>Nível 1</strong></div><div class="xt lt" style="margin-top:7px"><div class="xf" id="pprof-xf" style="--xw:0%"></div></div><div class="xs lt" id="pprof-xs">0/25 XP → Nível 2</div></div>
+      <div class="menu-it au" onclick="openChangePassword()"><div class="menu-ico">🔑</div><span class="menu-lb">Alterar Senha</span><span style="color:var(--bd);font-size:18px">›</span></div>
+      <div class="menu-it au"><div class="menu-ico">📋</div><span class="menu-lb">Meus Dados Pessoais</span><span style="color:var(--bd);font-size:18px">›</span></div>
+      <div class="menu-it au"><div class="menu-ico">🔔</div><span class="menu-lb">Notificações</span><span style="color:var(--bd);font-size:18px">›</span></div>
+      <div class="menu-it au"><div class="menu-ico">🔒</div><span class="menu-lb">Privacidade e Segurança</span><span style="color:var(--bd);font-size:18px">›</span></div>
+      <div class="menu-it dng au" onclick="doLogout()"><div class="menu-ico" style="background:rgba(220,60,60,.08)">🚪</div><span class="menu-lb">Sair da conta</span><span style="color:#c04040;font-size:18px">›</span></div>
+    </div>
+  </div>
+  <nav class="bnav" aria-label="Navegação móvel"><div class="bnav-inner">
+    <button class="bnb on" data-p="home"    onclick="goTab('p','home')"><span class="bnb-i">🏠</span><span class="bnb-l">Home</span><div class="bnb-dot"></div></button>
+    <button class="bnb"    data-p="orgs"    onclick="goTab('p','orgs')"><span class="bnb-i">🏢</span><span class="bnb-l">Organizações</span></button>
+    <button class="bnb"    data-p="apts"    onclick="goTab('p','apts')"><span class="bnb-i">📅</span><span class="bnb-l">Consultas</span></button>
+    <button class="bnb"    data-p="contact" onclick="goTab('p','contact')"><span class="bnb-i">💬</span><span class="bnb-l">Contato</span></button>
+    <button class="bnb"    data-p="pprof"   onclick="goTab('p','pprof')"><span class="bnb-i">👤</span><span class="bnb-l">Perfil</span></button>
+  </div></nav>
+</div>
+
+<!-- ═══ ADMIN SCREEN ═══ -->
+<div class="sc" id="sc-adm" style="background:var(--dk)">
+  <nav class="tnav dk" id="adm-nav" aria-label="Navegação principal">
+    <div class="nav-brand" onclick="goTab('a','ahome')"><div class="nav-icon">🌿</div><span class="nav-name">EcoConnect</span><span class="admin-pill">Pro</span></div>
+    <div class="nav-tabs">
+      <button class="nt on" data-a="ahome"  onclick="goTab('a','ahome')" aria-current="page" aria-label="Início">🏠 Home</button>
+      <button class="nt"    data-a="apats"  onclick="goTab('a','apats')">👥 Pacientes</button>
+      <button class="nt"    data-a="aobjs"  onclick="goTab('a','aobjs')">✅ Objetivos</button>
+      <button class="nt"    data-a="alogs"  onclick="goTab('a','alogs')">📝 Logs</button>
+      <button class="nt"    data-a="ainst"  onclick="goTab('a','ainst')">🏢 Instituições</button>
+      <button class="nt"    data-a="aprof"  onclick="goTab('a','aprof')">👤 Perfil</button>
+    </div>
+    <div class="nav-r"><div class="nav-av" id="adm-av">PH</div></div>
+  </nav>
+  <main class="pw wide" id="main-content" tabindex="-1">
+    <!-- HOME -->
+    <div class="tp on" id="a-ahome">
+      <div class="hero hero-dk"><div class="hero-orb" style="top:-60px;right:-60px;width:200px;height:200px"></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.38);margin-bottom:4px">Portal Profissional</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(20px,4vw,28px);color:#fff;margin-bottom:4px" id="adm-hello">Carregando...</h2>
+        <p style="font-size:12px;color:var(--g3)" id="adm-crp"></p>
+        <div class="stat-g"><div class="stat-c"><div class="stat-n" id="s-pats">—</div><div class="stat-l">Pacientes Vinculados</div></div><div class="stat-c"><div class="stat-n" id="s-today">—</div><div class="stat-l">Consultas Hoje</div></div><div class="stat-c"><div class="stat-n" id="s-prog">—</div><div class="stat-l">Progresso Médio (XP)</div></div><div class="stat-c"><div class="stat-n" id="s-objs">—</div><div class="stat-l">Objetivos Concluídos</div></div></div>
+      </div>
+      <div class="g2">
+        <div><div class="st dk"><h3>Pacientes Recentes</h3><button class="btn btn-dk sm" onclick="goTab('a','apats')">Ver todos</button></div><div class="card dk" style="padding:0;overflow:hidden" id="adm-recent-pats"><div class="page-ld dk"><div class="spin-el dk"></div></div></div></div>
+        <div><div class="st dk"><h3>Logs Recentes</h3><button class="btn btn-dk sm" onclick="goTab('a','alogs')">Ver todos</button></div><div id="adm-recent-logs"><div class="page-ld dk"><div class="spin-el dk"></div></div></div></div>
+      </div>
+    </div>
+    <!-- PATIENTS -->
+    <div class="tp" id="a-apats" style="padding-top:22px">
+      <div class="st dk"><h3>👥 Meus Pacientes <span id="pat-count" style="font-size:13px;font-weight:400;color:rgba(255,255,255,.26)"></span></h3><button class="btn btn-p sm" onclick="openInvitePatient()">+ Vincular</button></div>
+      <div class="srch dk"><span style="font-size:15px;opacity:.35;color:#fff">🔍</span><input type="text" id="pat-search" placeholder="Buscar por nome…" oninput="filterPats()"></div>
+      <div id="pat-list"><div class="page-ld dk"><div class="spin-el dk"></div></div></div>
+    </div>
+    <!-- OBJECTIVES -->
+    <div class="tp" id="a-aobjs" style="padding-top:22px">
+      <div class="st dk"><h3>✅ Objetivos</h3><button class="btn btn-p sm" onclick="openAddObj()">＋ Novo</button></div>
+      <div class="pat-chips" id="obj-chips"><div style="color:rgba(255,255,255,.3);font-size:13px;padding:8px">Nenhum paciente vinculado ainda.</div></div>
+      <div class="card dk au" style="margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px"><span style="font-size:13px;color:rgba(255,255,255,.52)" id="obj-who">Selecione um paciente</span><span style="font-size:13px;font-weight:700;color:var(--g3)" id="obj-ptxt"></span></div>
+        <div class="xh"><span id="obj-xp-txt">—</span><strong id="obj-lv-txt">—</strong></div>
+        <div class="xt" style="margin-top:7px"><div class="xf" id="obj-xf" style="--xw:0%"></div></div>
+        <div class="xs">XP atualiza ao concluir objetivos</div>
+      </div>
+      <div id="obj-list"><div class="empty-state"><div class="ei">👆</div><h4 style="color:rgba(255,255,255,.5)">Selecione um paciente acima</h4></div></div>
+      <button class="add-btn" id="add-obj-btn" style="display:none" onclick="openAddObj()">＋ Adicionar objetivo</button>
+    </div>
+    <!-- LOGS -->
+    <div class="tp" id="a-alogs" style="padding-top:22px">
+      <div class="st dk"><h3>📝 Logs Clínicos</h3><button class="btn btn-p sm" onclick="openAddLog()">＋ Novo Log</button></div>
+      <div class="pat-chips" id="log-chips"><div style="color:rgba(255,255,255,.3);font-size:13px;padding:8px">Nenhum paciente vinculado ainda.</div></div>
+      <div id="logs-list"><div class="empty-state"><div class="ei">👆</div><h4 style="color:rgba(255,255,255,.5)">Selecione um paciente acima</h4></div></div>
+    </div>
+    <!-- INSTITUTIONS -->
+    <div class="tp" id="a-ainst" style="padding-top:22px">
+      <div class="st dk"><h3>🏢 Instituições</h3><button class="btn btn-p sm" id="btn-new-inst" style="display:none" onclick="openCreateInst()">＋ Nova</button></div>
+      <div id="inst-content"><div class="page-ld dk"><div class="spin-el dk"></div></div></div>
+    </div>
+    <!-- PROFILE -->
+    <div class="tp" id="a-aprof" style="padding-top:22px">
+      <div style="background:linear-gradient(135deg,var(--dk),#0b3322);border-radius:24px;padding:28px 22px;text-align:center;margin-bottom:20px" class="au">
+        <div class="av" id="aprof-av" style="width:76px;height:76px;font-size:26px;margin:0 auto 14px;border:4px solid rgba(3,187,133,.26)">?</div>
+        <div style="font-family:'Instrument Serif',serif;font-size:22px;color:#fff" id="aprof-name">—</div>
+        <div style="font-size:12px;color:var(--g3);margin-top:4px" id="aprof-spec"></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:3px" id="aprof-crp"></div>
+        <div style="display:flex;justify-content:center;gap:28px;margin-top:18px">
+          <div><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff" id="aprof-pats">—</div><div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:2px">Pacientes</div></div>
+          <div><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff" id="aprof-objs">—</div><div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:2px">Objetivos</div></div>
+          <div><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff" id="aprof-prog">—</div><div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:2px">Progresso</div></div>
+        </div>
+      </div>
+      <div class="card dk au" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.85)">Meu Perfil</div><button class="btn btn-dk sm" onclick="openEditPro()">✏️ Editar</button></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:10px" id="aprof-bio">—</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px" id="aprof-approaches"></div>
+      </div>
+      <!-- Institution Mode Card -->
+      <div class="inst-mode-card au" id="inst-mode-card">
+        <div class="inst-mode-header">
+          <div>
+            <div class="inst-mode-title">🏢 Modo Instituição</div>
+            <div class="inst-mode-badge off" id="inst-mode-badge">Inativo</div>
+          </div>
+          <button class="btn btn-dk sm" id="inst-mode-btn" onclick="toggleInstMode()">Ativar</button>
+        </div>
+        <div class="inst-mode-desc">Quando ativo, você pode criar e gerenciar até 3 instituições, vinculando profissionais a cada uma delas.</div>
+        <div class="limit-bar" id="inst-limit-bar" style="display:none"><div class="limit-fill" id="inst-limit-fill" style="width:0%"></div></div>
+        <div id="inst-limit-txt" style="font-size:11px;color:rgba(255,255,255,.35);margin-top:6px;display:none"></div>
+      </div>
+      <div class="adm-mi au" onclick="openChangePasswordPro()"><div class="adm-ic">🔑</div><span class="adm-lb">Alterar Senha</span><span style="color:rgba(255,255,255,.18);font-size:18px">›</span></div>
+      <div class="adm-mi au"><div class="adm-ic">🔔</div><span class="adm-lb">Notificações</span><span style="color:rgba(255,255,255,.18);font-size:18px">›</span></div>
+      <div class="adm-mi au"><div class="adm-ic">🔒</div><span class="adm-lb">Privacidade e LGPD</span><span style="color:rgba(255,255,255,.18);font-size:18px">›</span></div>
+      <div class="adm-mi dng au" onclick="doLogout()"><div class="adm-ic" style="background:rgba(220,60,60,.12)">🚪</div><span class="adm-lb">Encerrar sessão</span></div>
+    </div>
+  </div>
+  <nav class="bnav dk" aria-label="Navegação móvel"><div class="bnav-inner">
+    <button class="bnb on" data-a="ahome" onclick="goTab('a','ahome')"><span class="bnb-i">🏠</span><span class="bnb-l">Home</span><div class="bnb-dot"></div></button>
+    <button class="bnb" data-a="apats"   onclick="goTab('a','apats')"><span class="bnb-i">👥</span><span class="bnb-l">Pacientes</span></button>
+    <button class="bnb" data-a="aobjs"   onclick="goTab('a','aobjs')"><span class="bnb-i">✅</span><span class="bnb-l">Objetivos</span></button>
+    <button class="bnb" data-a="alogs"   onclick="goTab('a','alogs')"><span class="bnb-i">📝</span><span class="bnb-l">Logs</span></button>
+    <button class="bnb" data-a="ainst"   onclick="goTab('a','ainst')"><span class="bnb-i">🏢</span><span class="bnb-l">Institutos</span></button>
+    <button class="bnb" data-a="aprof"   onclick="goTab('a','aprof')"><span class="bnb-i">👤</span><span class="bnb-l">Perfil</span></button>
+  </div></nav>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   CONFIG
+═══════════════════════════════════════════════ */
+const API = (window.ECOCONNECT_API || window.__ECOCONNECT_API__ || import.meta?.env?.VITE_API_URL || 'http://localhost:3001') + '/api';
+let TOKEN = localStorage.getItem('eco_token') || '';
+let USER  = null;
+
+// App state
+let isPro = false, ltab = 'login', selTime = '14:00';
+let allOrgs = [], allInsts = [], allPats = [];
+let selPid = null, objsCache = {}, logsCache = {};
+let instData = { institutionMode: false, institutionCount: 0, maxAllowed: 3, memberships: [] };
+
+/* ═══════════════════════════════════════════════
+   TIPS (client-side, no backend needed)
+═══════════════════════════════════════════════ */
+const TIPS = {
+  SLEEP:{ title:'💤 Dicas para melhorar o sono', tips:['Mantenha o mesmo horário todos os dias, inclusive fins de semana.','Desligue telas pelo menos 1h antes de dormir.','Quarto escuro, silencioso e ≈22°C.','Evite cafeína após as 15h.','Crie uma rotina relaxante antes de dormir.'], motivation:'🌙 Um sono de qualidade é a base de tudo!' },
+  EMOTIONAL:{ title:'💚 Dicas para regulação emocional', tips:['Respire: inspire 4s, segure 4s, expire 6s.','Use um diário emocional sem julgamentos.','Identifique seus gatilhos.','Faça pausas quando sentir sobrecarga.','Apps de meditação têm sessões de 5 min gratuitas.'], motivation:'💛 Suas emoções são válidas. Reconhecê-las já é um grande passo!' },
+  SOCIAL:{ title:'🤝 Dicas para habilidades sociais', tips:['Comece com interações pequenas.','Grupos com interesses em comum são ótimos.','Tudo bem sair quando precisar de pausa.','Pratique conversas na frente do espelho.','Scripts sociais ajudam em situações comuns.'], motivation:'🌟 Cada interação é uma oportunidade!' },
+  MOTOR:{ title:'🏃 Dicas para coordenação motora', tips:['Argila e origami melhoram coordenação fina.','Jogar bola ou dançar são atividades divertidas.','10 minutos diários fazem diferença.','Nadar é excelente para coordenação geral.'], motivation:'🎯 O corpo aprende com a prática!' },
+  COGNITIVE:{ title:'🧠 Dicas para foco e cognição', tips:['Pomodoro: 25 min foco + 5 min pausa.','Elimine distrações: modo "não perturbe".','Uma tarefa por vez.','Listas escritas aliviam a carga mental.','20 min de exercício físico aumentam o foco.'], motivation:'🚀 Cada sessão de foco fortalece seu cérebro!' },
+  ROUTINE:{ title:'📅 Dicas para rotina', tips:['Use alarmes e lembretes visuais.','Prepare tudo na noite anterior.','Divida tarefas grandes em passos pequenos.','Horários fixos criam previsibilidade.','Recompense-se após concluir blocos de tarefas.'], motivation:'📌 Uma boa rotina libera energia para o que importa!' },
+  COMMUNICATION:{ title:'🗣️ Dicas para comunicação', tips:['Escreva antes de falar para organizar ideias.','Leitura regular amplia vocabulário.','Pedir para repetir é sempre válido.','Praticar em voz alta reduz ansiedade.','Comunicação alternativa é uma ferramenta poderosa.'], motivation:'💬 Comunicar-se do seu jeito é completamente válido!' },
+  OTHER:{ title:'💡 Dicas gerais', tips:['Celebre cada pequena conquista.','Peça ajuda quando precisar — é força, não fraqueza.','Hidratação e alimentação afetam humor e foco.','Inclua atividades prazerosas na rotina.','Neurodivergência é uma forma diferente de ser.'], motivation:'🌈 Você está no caminho certo!' },
+};
+const tipsFor = cat => TIPS[cat] || TIPS.OTHER;
+
+/* ═══════════════════════════════════════════════
+   API CLIENT — real backend only
+═══════════════════════════════════════════════ */
+async function apiFetch(method, path, body = null) {
+  const opts = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
+    },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+  };
+  const res = await fetch(API + path, opts);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw data;
+  return data;
+}
+const api = {
+  get:    p     => apiFetch('GET', p),
+  post:   (p,b) => apiFetch('POST', p, b),
+  patch:  (p,b) => apiFetch('PATCH', p, b),
+  delete: p     => apiFetch('DELETE', p),
+};
+
+/* ═══════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  initScroll();
+  initRipples();
+  const saved = localStorage.getItem('eco_user');
+  if (saved && TOKEN) {
+    try { USER = JSON.parse(saved); launchApp(USER); } catch { clearSession(); }
+  }
+});
+
+function clearSession() {
+  TOKEN = ''; USER = null;
+  allOrgs = []; allInsts = []; allPats = []; selPid = null;
+  objsCache = {}; logsCache = {}; instData = { institutionMode:false, institutionCount:0, maxAllowed:3, memberships:[] };
+  localStorage.removeItem('eco_token');
+  localStorage.removeItem('eco_user');
+}
+
+/* ═══════════════════════════════════════════════
+   LOGIN UI
+═══════════════════════════════════════════════ */
+function toggleMode() {
+  isPro = !isPro;
+  $('msw').classList.toggle('on', isPro);
+  $('mode-nm').textContent  = isPro ? '⚕️ Sou Profissional' : '👤 Sou Paciente';
+  $('mode-dc').textContent  = isPro ? 'Clique para acessar como paciente' : 'Clique para acessar como profissional';
+  $('pro-badge').style.display = isPro ? 'inline-flex' : 'none';
+  $('pro-reg-toggle').style.display = isPro && ltab === 'login' ? 'block' : 'none';
+  // Reset to login tab on mode switch
+  swTab('login');
+  $('lg-err').style.display = 'none';
+  $('lg-ok').style.display  = 'none';
+}
+
+function swTab(t) {
+  ltab = t;
+  $('t1').classList.toggle('on', t === 'login');
+  $('t2').classList.toggle('on', t === 'reg');
+
+  const isReg = t === 'reg';
+  $('fn').style.display              = (!isPro && isReg) ? 'block' : 'none';
+  $('fc').style.display              = (!isPro && isReg) ? 'block' : 'none';
+  $('pw-hint-block').style.display   = isReg ? 'block' : 'none';
+  $('fgt').style.display             = (!isReg && !isPro) ? 'block' : 'none';
+  $('pro-reg-toggle').style.display  = (isPro && !isReg) ? 'block' : 'none';
+  $('pro-invite-block').style.display= (isPro && isReg) ? 'block' : 'none';
+  if (isPro && isReg) {
+    $('pro-reg-fields').style.display = 'block';
+    $('pro-crp-field').style.display  = 'block';
+  } else {
+    $('pro-reg-fields') && ($('pro-reg-fields').style.display = 'none');
+    $('pro-crp-field')  && ($('pro-crp-field').style.display  = 'none');
+  }
+  $('lh').textContent = isReg ? 'Criar sua conta' : 'Bem-vindo de volta';
+  $('ls').textContent = isReg
+    ? (isPro ? 'Preencha seus dados profissionais' : 'Cadastre-se gratuitamente')
+    : (isPro ? 'Acesse sua conta profissional' : 'Acesse sua conta para continuar');
+  $('lgbt').textContent = isReg ? 'Criar conta' : 'Entrar';
+  $('lg-err').style.display = 'none';
+  $('lg-ok').style.display  = 'none';
+}
+
+function swTabPro() { swTab('reg'); }
+
+async function doLogin() {
+  const btn = $('lgb'), errEl = $('lg-err'), okEl = $('lg-ok');
+  errEl.style.display = 'none'; okEl.style.display = 'none';
+  btn.disabled = true;
+  $('lgba').innerHTML = '<span class="spin-el" style="--sz:16px"></span>';
+
+  const email  = ($('i-email')?.value || '').trim();
+  const pass   = $('i-pass')?.value || '';
+  const name   = ($('i-name')?.value || '').trim();
+  const cond   = $('i-cond')?.value;
+  const invite = ($('i-invite')?.value || '').trim();
+  const spec   = ($('i-spec')?.value || '').trim();
+  const crp    = ($('i-crp')?.value || '').trim();
+
+  try {
+    let data;
+    if (ltab === 'reg') {
+      if (isPro) {
+        data = await api.post('/auth/register-professional', { name, email, password: pass, inviteCode: invite, specialty: spec || undefined, crp: crp || undefined });
+      } else {
+        data = await api.post('/auth/register', { name, email, password: pass, condition: cond });
+      }
+      okEl.textContent = '✅ Conta criada com sucesso! Entrando...';
+      okEl.style.display = 'block';
+    } else {
+      data = await api.post('/auth/login', { email, password: pass, role: isPro ? 'PROFESSIONAL' : 'PATIENT' });
+    }
+
+    TOKEN = data.token;
+    localStorage.setItem('eco_token', TOKEN);
+    localStorage.setItem('eco_user', JSON.stringify(data.user));
+    USER = data.user;
+
+    setTimeout(() => launchApp(data.user), ltab === 'reg' ? 700 : 0);
+  } catch (e) {
+    const msg = e?.error || e?.fields?.[0]?.mensagem || e?.message || 'Erro ao entrar. Verifique seus dados.';
+    errEl.textContent = '⚠️ ' + msg;
+    errEl.style.display = 'block';
+    $('lgb').style.animation = 'shake .3s ease';
+    setTimeout(() => { if($('lgb')) $('lgb').style.animation = ''; }, 350);
+  }
+  btn.disabled = false;
+  $('lgba').textContent = '→';
+}
+
+function doLogout() { clearSession(); showScreen('sc-login'); }
+
+function openForgotPassword() {
+  openMdl('Recuperar Senha', `
+    <p style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:16px">Entre em contato com o administrador do sistema para redefinir sua senha.</p>
+    <div class="dfd"><label>Seu e-mail</label><input type="email" id="fp-email" placeholder="seu@email.com"></div>
+    <button class="btn btn-p md fw" onclick="requestPwReset()">Enviar solicitação</button>`);
+}
+
+async function requestPwReset() {
+  showToast('📧 Solicitação enviada! Verifique seu e-mail.', 'ok');
+  closeMdl();
+}
+
+/* ═══════════════════════════════════════════════
+   APP LAUNCH
+═══════════════════════════════════════════════ */
+async function launchApp(user) {
+  if (user.role === 'PROFESSIONAL') {
+    fillAdmUI(user);
+    showScreen('sc-adm');
+    await loadAdmHome();
+  } else {
+    fillPatUI(user);
+    showScreen('sc-pat');
+    await loadPatHome();
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   PATIENT
+═══════════════════════════════════════════════ */
+function fillPatUI(u) {
+  const p = u.patientProfile || {};
+  const first = u.name.split(' ')[0];
+  setText('pat-av', u.avatar || '?');
+  setText('pat-hello', first + ' 👋');
+  setText('pprof-av', u.avatar || '?');
+  setText('pprof-name', u.name);
+  const cl = { TEA:'TEA', ADHD:'TDAH', DYSLEXIA:'Dislexia', DYSPRAXIA:'Dyspraxia', UNSPECIFIED:'—', OTHER:'Outra' };
+  setText('pprof-cond', (cl[p.condition] || p.condition || '—') + ' · EcoConnect');
+  updateXP(p.xp || 0, p.level || 1);
+}
+
+function updateXP(xp, lv) {
+  const pct = Math.min(100, ((xp % 25) / 25) * 100);
+  setText('xp-val', `⭐ ${xp} XP`);
+  setText('xp-sub', `Nível ${lv} · ${xp % 25}/25 XP → Nível ${lv + 1}`);
+  document.getElementById('xp-bar')?.style.setProperty('--xw', pct + '%');
+  setText('pprof-xp', '⭐' + xp);
+  setText('pprof-level', 'Nv.' + lv);
+  const xhEl = document.getElementById('pprof-xh');
+  if (xhEl) xhEl.innerHTML = `<span>⭐ ${xp} XP</span><strong>Nível ${lv}</strong>`;
+  document.getElementById('pprof-xf')?.style.setProperty('--xw', pct + '%');
+  setText('pprof-xs', `${xp % 25}/25 XP → Nível ${lv + 1}`);
+}
+
+async function loadPatHome() {
+  const pid = USER?.patientProfile?.id;
+  if (!pid) return;
+  const [objs, apts, orgs] = await Promise.all([
+    loadPatObjs(pid),
+    loadPatApts(),
+    loadOrgsData(),
+  ]);
+  renderHomeApts(apts);
+  renderHomeObjs(objs);
+  renderHomeOrgs(orgs.slice(0, 3));
+  const done = apts.filter(a => a.status === 'COMPLETED').length;
+  setText('pprof-apts', done);
+}
+
+async function loadPatObjs(pid) {
+  try { return await api.get(`/objectives?patientId=${pid}`); }
+  catch { return []; }
+}
+
+async function loadPatApts() {
+  try { return await api.get('/appointments'); }
+  catch { return []; }
+}
+
+async function loadOrgsData() {
+  if (allOrgs.length) return allOrgs;
+  try {
+    // Fetch from both institutions and legacy organizations
+    const [insts] = await Promise.all([
+      api.get('/institutions').catch(() => []),
+    ]);
+    // Normalize institution to org-like shape
+    const normalized = insts.map(i => ({
+      ...i,
+      slots: i.slots ?? Math.max(0, i.slotsTotal - i.slotsUsed),
+      isInstitution: true,
+    }));
+    allOrgs = normalized;
+    allInsts = insts;
+    return allOrgs;
+  } catch { return []; }
+}
+
+function renderHomeApts(apts) {
+  const el = $('home-apts');
+  const up = apts.filter(a => a.status === 'SCHEDULED').slice(0, 2);
+  if (!up.length) {
+    el.innerHTML = `<div class="card"><p style="text-align:center;color:var(--mu);padding:20px;font-size:14px">Nenhuma consulta agendada.<br><button class="btn btn-o sm" style="margin-top:10px" onclick="goTab('p','orgs')">Buscar organizações</button></p></div>`;
+    return;
+  }
+  el.innerHTML = up.map(a => `
+    <div class="card au" style="margin-bottom:10px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--g7),var(--g5));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">${a.institution?.emoji || a.organization?.emoji || '🏥'}</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:14px">${a.institution?.name || a.organization?.name || 'Organização'}</div><div style="font-size:12px;color:var(--mu)">${fmtD(a.date)} · ${a.time || ''}</div></div>
+        <span class="bg bg-g">Agendado</span>
+      </div>
+    </div>`).join('');
+}
+
+function renderHomeObjs(objs) {
+  const el = $('home-objs');
+  const vis = objs.filter(o => o.isVisible).slice(0, 5);
+  if (!vis.length) {
+    el.innerHTML = `<div class="card"><p style="text-align:center;color:var(--mu);padding:20px;font-size:14px">Nenhum objetivo definido ainda.<br>Seu profissional irá criar em breve.</p></div>`;
+    return;
+  }
+  el.innerHTML = `<div class="card au">${vis.map(o => `
+    <div class="obj-row" style="cursor:${!o.done ? 'pointer' : 'default'}" onclick="${!o.done ? `showTipsModal(${JSON.stringify(o).replace(/"/g, '&quot;')})` : ''}">
+      <div class="obj-ck ${o.done ? 'dn' : 'td'}"></div>
+      <div style="flex:1">
+        <div style="font-size:13px;color:${o.done ? 'var(--mu)' : 'var(--tx)'};text-decoration:${o.done ? 'line-through' : 'none'}">${o.text}</div>
+        ${o.done
+          ? `<div style="font-size:11px;color:var(--g7);margin-top:2px">✅ +${o.xpReward} XP</div>`
+          : `<div style="font-size:11px;color:var(--mu2);margin-top:2px">+${o.xpReward} XP${o.deadline ? ' · Prazo: ' + fmtD(o.deadline) : ''} <span style="color:var(--g5)">→ ver dicas</span></div>`}
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+function showTipsModal(obj) {
+  const t = tipsFor(obj.category);
+  openMdl(t.title, `
+    <p style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:14px">Objetivo: <strong style="color:var(--g3)">${obj.text}</strong></p>
+    <ul class="tips-ul" style="margin-bottom:14px">${t.tips.map(tip => `<li>${tip}</li>`).join('')}</ul>
+    <div style="background:rgba(3,187,133,.1);border:1px solid rgba(3,187,133,.2);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--g3);font-weight:600">${t.motivation}</div>
+    <button class="btn btn-dk md fw" style="margin-top:16px" onclick="closeMdl()">Entendido! 💪</button>`);
+}
+
+function renderHomeOrgs(orgs) {
+  const el = $('home-orgs');
+  if (!orgs.length) {
+    el.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--mu);font-size:14px">Nenhuma organização cadastrada ainda.</div>`;
+    return;
+  }
+  el.innerHTML = orgs.map(o => `
+    <div class="card cl au" onclick="openBook('${o.id}','${o.name}','${o.emoji || '🏥'}')">
+      <div style="display:flex;align-items:center;gap:11px">
+        <div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--g3),var(--g7));display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0">${o.emoji || '🏥'}</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:14px">${o.name}</div><div style="font-size:12px;color:var(--mu)">${o.type || ''} · ${o.city || ''}</div></div>
+        <button class="btn ${(o.slots || 0) > 0 ? 'btn-p' : 'btn-o'} sm" onclick="event.stopPropagation();openBook('${o.id}','${o.name}','${o.emoji || '🏥'}')">${(o.slots || 0) > 0 ? 'Agendar' : 'Espera'}</button>
+      </div>
+    </div>`).join('');
+}
+
+async function loadOrgsTab() {
+  const orgs = await loadOrgsData();
+  renderOrgsGrid(orgs);
+}
+
+function renderOrgsGrid(orgs) {
+  const el = $('orgs-grid');
+  if (!orgs.length) {
+    el.innerHTML = `<div class="card" style="grid-column:1/-1"><div class="empty-state"><div class="ei">🏢</div><h4>Nenhuma organização encontrada</h4><p>Não há organizações cadastradas ainda.<br>Profissionais com Modo Instituição podem criar as primeiras.</p></div></div>`;
+    return;
+  }
+  el.innerHTML = orgs.map(o => {
+    const proList = (o.professionals || o.members?.map(m => m.professional) || []).map(p => `
+      <div class="pro-mini au">
+        <div class="av" style="width:38px;height:38px;font-size:13px;flex-shrink:0">${p.user?.avatar || '?'}</div>
+        <div>
+          <div class="pro-mini-name">${p.user?.name || 'Profissional'}</div>
+          <div class="pro-mini-spec">${p.specialty || ''}</div>
+          ${p.bio ? `<div style="font-size:11px;color:var(--mu2);margin-top:3px;line-height:1.4">${p.bio}</div>` : ''}
+          ${p.experience ? `<div style="font-size:11px;color:var(--mu2);margin-top:2px">📅 ${p.experience}</div>` : ''}
+          ${p.approaches?.length ? `<div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:5px">${p.approaches.map(a => `<span style="padding:2px 8px;border-radius:20px;background:rgba(3,187,133,.1);font-size:10px;color:var(--g7);font-weight:600">${a}</span>`).join('')}</div>` : ''}
+        </div>
+      </div>`).join('');
+    return `
+    <div class="card cl au" onclick="openBook('${o.id}','${o.name}','${o.emoji || '🏥'}','${o.isInstitution ? 'inst' : 'org'}')">
+      <div style="display:flex;align-items:flex-start;gap:13px;margin-bottom:12px">
+        <div class="org-ic">${o.emoji || '🏥'}</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:15px;margin-bottom:2px">${o.name}</div><div style="font-size:12px;color:var(--mu)">${o.type || ''} · ${o.city || ''}</div></div>
+        <span style="font-size:13px;color:#f59e0b;flex-shrink:0">⭐ ${o.rating || 5}</span>
+      </div>
+      ${o.description ? `<p style="font-size:12px;color:var(--mu);margin-bottom:12px;line-height:1.6">${o.description}</p>` : ''}
+      <div class="org-tags">${(o.tags || []).map(t => `<span class="org-tag">${t.tag || t}</span>`).join('')}</div>
+      ${proList ? `<div style="margin-bottom:12px">${proList}</div>` : ''}
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:12px;color:var(--mu)">🕐 Vagas: ${o.slots || 0}</span>
+        <button class="btn ${(o.slots || 0) > 0 ? 'btn-p' : 'btn-o'} sm" onclick="event.stopPropagation();openBook('${o.id}','${o.name}','${o.emoji || '🏥'}','${o.isInstitution ? 'inst' : 'org'}')">${(o.slots || 0) > 0 ? 'Agendar' : 'Lista de espera'}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterOrgs() {
+  const q = ($('org-search')?.value || '').toLowerCase();
+  const tag = document.querySelector('#org-chips .chip.on')?.textContent || 'Todos';
+  renderOrgsGrid(allOrgs.filter(o => {
+    const mq = !q || o.name.toLowerCase().includes(q) || o.city?.toLowerCase().includes(q);
+    const mt = tag === 'Todos' || (o.tags || []).some(t => (t.tag || t) === tag);
+    return mq && mt;
+  }));
+}
+function chipOrg(el) { document.querySelectorAll('#org-chips .chip').forEach(c => c.classList.remove('on')); el.classList.add('on'); filterOrgs(); }
+
+async function loadAptsTab() {
+  const apts = await loadPatApts();
+  const el = $('apts-list');
+  if (!apts.length) {
+    el.innerHTML = `<div class="card"><div class="empty-state"><div class="ei">📅</div><h4>Nenhuma consulta ainda</h4><p style="color:var(--mu)">Agende sua primeira consulta em uma de nossas organizações.</p><button class="btn btn-p sm" style="margin-top:12px" onclick="goTab('p','orgs')">Buscar organizações</button></div></div>`;
+    return;
+  }
+  const sc = { SCHEDULED:'bg-g', COMPLETED:'bg-b', CANCELLED:'bg-r', NO_SHOW:'bg-o' };
+  const sl = { SCHEDULED:'Agendado', COMPLETED:'Concluída', CANCELLED:'Cancelada', NO_SHOW:'Faltou' };
+  el.innerHTML = apts.map(a => `
+    <div class="card au" style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--g7),var(--g5));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">${a.institution?.emoji || a.organization?.emoji || '🏥'}</div>
+        <div style="flex:1">
+          <div style="font-weight:700;font-size:14px">${a.institution?.name || a.organization?.name || 'Organização'}</div>
+          <div style="font-size:12px;color:var(--mu)">${fmtD(a.date)} · ${a.time || ''}</div>
+          ${a.notes ? `<div style="font-size:11px;color:var(--mu);margin-top:3px;font-style:italic">"${a.notes}"</div>` : ''}
+        </div>
+        <span class="bg ${sc[a.status] || 'bg-g'}">${sl[a.status] || a.status}</span>
+      </div>
+      ${a.status === 'SCHEDULED' ? `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--sf)"><button class="btn btn-dr sm" onclick="cancelApt('${a.id}')">Cancelar consulta</button></div>` : ''}
+    </div>`).join('');
+}
+
+async function cancelApt(id) {
+  if (!confirm('Cancelar esta consulta?')) return;
+  try { await api.patch(`/appointments/${id}/cancel`, { reason: 'Cancelado pelo paciente' }); showToast('⚠️ Consulta cancelada', 'ok'); loadAptsTab(); }
+  catch(e) { showToast('❌ ' + (e?.error || 'Erro ao cancelar'), 'err'); }
+}
+
+async function sendContact() {
+  const name = $('ct-name')?.value, email = $('ct-email')?.value, msg = $('ct-msg')?.value;
+  if (!name || !email || !msg) { showToast('⚠️ Preencha todos os campos', 'err'); return; }
+  try {
+    await api.post('/contact', { name, email, message: msg });
+    showToast('✅ Mensagem enviada! Retornaremos em até 24h.', 'ok');
+    $('ct-name').value = ''; $('ct-email').value = ''; $('ct-msg').value = '';
+  } catch(e) { showToast('❌ ' + (e?.error || 'Erro ao enviar'), 'err'); }
+}
+
+function openChangePassword() { openChangePwModal(); }
+function openChangePasswordPro() { openChangePwModal(); }
+function openChangePwModal() {
+  openMdl('Alterar Senha', `
+    <div class="dfd"><label>Senha atual</label><input type="password" id="cp-cur" placeholder="Sua senha atual"></div>
+    <div class="dfd"><label>Nova senha</label><input type="password" id="cp-new" placeholder="Mínimo 8 caracteres, 1 maiúscula, 1 número"></div>
+    <div class="dfd"><label>Confirmar nova senha</label><input type="password" id="cp-cfm" placeholder="Repita a nova senha"></div>
+    <div class="err-box" id="cp-err" style="display:none"></div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-dk md" style="flex:1" onclick="closeMdl()">Cancelar</button>
+      <button class="btn btn-p md" style="flex:1" onclick="saveNewPassword()">Salvar</button>
+    </div>`);
+}
+async function saveNewPassword() {
+  const cur = $('cp-cur')?.value, nw = $('cp-new')?.value, cfm = $('cp-cfm')?.value;
+  if (!cur || !nw) { $('cp-err').textContent = '⚠️ Preencha todos os campos'; $('cp-err').style.display = 'block'; return; }
+  if (nw !== cfm) { $('cp-err').textContent = '⚠️ As senhas não coincidem'; $('cp-err').style.display = 'block'; return; }
+  try {
+    await api.post('/auth/change-password', { currentPassword: cur, newPassword: nw });
+    closeMdl(); showToast('✅ Senha alterada com sucesso!', 'ok');
+  } catch(e) { $('cp-err').textContent = '⚠️ ' + (e?.error || 'Erro'); $('cp-err').style.display = 'block'; }
+}
+
+/* ═══════════════════════════════════════════════
+   ADMIN
+═══════════════════════════════════════════════ */
+function fillAdmUI(u) {
+  const p = u.professionalProfile || {};
+  setText('adm-av', u.avatar || '?');
+  setText('adm-hello', u.name + ' 👨‍⚕️');
+  setText('adm-crp', (p.crp || '') + (p.crp && p.specialty ? ' · ' : '') + (p.specialty || ''));
+  setText('aprof-av', u.avatar || '?');
+  setText('aprof-name', u.name);
+  setText('aprof-spec', p.specialty || '');
+  setText('aprof-crp', p.crp || '');
+  updateInstModeUI(p.institutionMode, p.institutionCount || 0, 3);
+}
+
+function updateInstModeUI(active, count, max) {
+  const badge = $('inst-mode-badge'), btn = $('inst-mode-btn');
+  const limitBar = $('inst-limit-bar'), limitFill = $('inst-limit-fill'), limitTxt = $('inst-limit-txt');
+  if (badge) { badge.textContent = active ? 'Ativo' : 'Inativo'; badge.className = 'inst-mode-badge ' + (active ? 'on' : 'off'); }
+  if (btn) { btn.textContent = active ? 'Desativar' : 'Ativar'; btn.className = active ? 'btn btn-warn sm' : 'btn btn-dk sm'; }
+  if (limitBar) limitBar.style.display = active ? 'block' : 'none';
+  if (limitFill) limitFill.style.width = active ? Math.round(count / max * 100) + '%' : '0%';
+  if (limitTxt) { limitTxt.style.display = active ? 'block' : 'none'; limitTxt.textContent = `${count} de ${max} instituições criadas`; }
+  if ($('btn-new-inst')) $('btn-new-inst').style.display = active && count < max ? 'inline-flex' : 'none';
+}
+
+async function loadAdmHome() {
+  try {
+    const [stats, pats, proData] = await Promise.all([
+      api.get('/users/professional/stats').catch(() => ({})),
+      api.get('/users/patients').catch(() => []),
+      api.get('/users/professional/me').catch(() => null),
+    ]);
+    // Stats
+    setText('s-pats', stats.totalPatients ?? 0);
+    setText('s-today', stats.consultasHoje ?? 0);
+    setText('s-prog', (stats.taxaProgresso ?? 0) + '%');
+    setText('s-objs', stats.objetivosConcluidos ?? 0);
+    setText('aprof-pats', stats.totalPatients ?? 0);
+    setText('aprof-objs', stats.objetivosConcluidos ?? 0);
+    setText('aprof-prog', (stats.taxaProgresso ?? 0) + '%');
+    // Patients
+    allPats = pats;
+    setText('pat-count', pats.length + ' total');
+    renderAdmPatsCompact(pats.slice(0, 4));
+    buildChips();
+    // Pro profile
+    if (proData) {
+      setText('aprof-bio', proData.bio || 'Sem biografia cadastrada.');
+      const apEl = $('aprof-approaches');
+      if (apEl) apEl.innerHTML = (proData.approaches || []).map(a => `<span style="padding:3px 10px;border-radius:20px;background:rgba(3,187,133,.12);font-size:11px;color:var(--g3);font-weight:600">${a}</span>`).join('');
+      updateInstModeUI(proData.institutionMode, proData.institutionCount || 0, 3);
+    }
+    // Recent logs
+    if (pats.length) { const logs = await api.get(`/logs?patientId=${pats[0].id}`).catch(() => []); renderAdmLogs(logs.slice(0, 3), 'adm-recent-logs'); }
+    else { $('adm-recent-logs').innerHTML = emptyState('📝', 'Sem logs', 'Vincule pacientes para ver logs.'); }
+  } catch(e) { console.error('loadAdmHome error', e); }
+}
+
+async function loadPatsList() {
+  try {
+    const pats = await api.get('/users/patients');
+    allPats = pats;
+    setText('pat-count', pats.length + ' total');
+    renderPatsList(pats);
+    buildChips();
+  } catch(e) { $('pat-list').innerHTML = errState(e); }
+}
+
+function renderAdmPatsCompact(pats) {
+  const el = $('adm-recent-pats');
+  if (!pats.length) { el.innerHTML = emptyState('👥','Sem pacientes','Vincule pacientes para começar.'); return; }
+  const bc = { TEA:'bg-d', ADHD:'bg-o', DYSLEXIA:'bg-b', DYSPRAXIA:'bg-g', OTHER:'bg-d', UNSPECIFIED:'bg-d' };
+  el.innerHTML = pats.map(p => `
+    <div class="pat-row" onclick="goTab('a','aobjs');selectPat('${p.id}')">
+      <div class="av" style="width:40px;height:40px;font-size:13px">${p.user?.avatar || '?'}</div>
+      <div style="flex:1"><div style="font-weight:700;font-size:14px;color:rgba(255,255,255,.9)">${p.user?.name || 'Paciente'}</div><div style="font-size:12px;color:rgba(255,255,255,.33)">${condLbl(p.condition)}</div></div>
+      <span class="bg ${bc[p.condition] || 'bg-d'}">⭐ ${p.xp}</span>
+    </div>`).join('');
+}
+
+function renderPatsList(pats) {
+  const el = $('pat-list');
+  if (!pats.length) { el.innerHTML = emptyState('👥','Sem pacientes','Use "+ Vincular" para convidar um paciente.'); return; }
+  const bc = { TEA:'bg-d', ADHD:'bg-o', DYSLEXIA:'bg-b', DYSPRAXIA:'bg-g', OTHER:'bg-d', UNSPECIFIED:'bg-d' };
+  el.innerHTML = pats.map(p => `
+    <div class="card dk cl au" style="margin-bottom:12px" onclick="goTab('a','aobjs');selectPat('${p.id}')">
+      <div style="display:flex;align-items:center;gap:13px">
+        <div class="av" style="width:46px;height:46px;font-size:15px">${p.user?.avatar || '?'}</div>
+        <div style="flex:1">
+          <div style="font-weight:700;font-size:15px;color:rgba(255,255,255,.88)">${p.user?.name || 'Paciente'}</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.32);margin-bottom:8px">${condLbl(p.condition)}</div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:11px;color:rgba(255,255,255,.38)">⭐ ${p.xp} XP</span><span style="font-size:11px;font-weight:700;color:var(--g3)">Nível ${p.level}</span></div>
+            <div class="xt"><div class="xf" style="--xw:${Math.round((p.xp % 25) / 25 * 100)}%"></div></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          <span class="bg ${bc[p.condition] || 'bg-d'}">⭐ ${p.xp}</span>
+          <button class="btn btn-dr sm" style="font-size:11px" onclick="event.stopPropagation();unlinkPat('${p.id}','${p.user?.name}')">Desvincular</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function filterPats() {
+  const q = ($('pat-search')?.value || '').toLowerCase();
+  renderPatsList(allPats.filter(p => !q || (p.user?.name || '').toLowerCase().includes(q)));
+}
+
+function openInvitePatient() {
+  openMdl('Vincular Paciente', `
+    <p style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:16px">Informe o e-mail do paciente já cadastrado no EcoConnect:</p>
+    <div class="dfd"><label>E-mail do paciente</label><input type="email" id="inv-email" placeholder="paciente@email.com"></div>
+    <div class="err-box" id="inv-err" style="display:none"></div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-dk md" style="flex:1" onclick="closeMdl()">Cancelar</button>
+      <button class="btn btn-p md" style="flex:1" onclick="doInvite()">Vincular</button>
+    </div>`);
+}
+
+async function doInvite() {
+  const email = $('inv-email')?.value?.trim();
+  if (!email) { $('inv-err').textContent = '⚠️ E-mail obrigatório'; $('inv-err').style.display = 'block'; return; }
+  try {
+    const r = await api.post('/users/patients/invite', { email });
+    closeMdl(); showToast(`✅ ${r.patient?.user?.name || 'Paciente'} vinculado com sucesso!`, 'ok');
+    await loadPatsList(); buildChips();
+  } catch(e) { $('inv-err').textContent = '⚠️ ' + (e?.error || 'Erro'); $('inv-err').style.display = 'block'; }
+}
+
+async function unlinkPat(id, name) {
+  if (!confirm(`Desvincular ${name || 'este paciente'}?`)) return;
+  try {
+    await api.delete(`/users/patients/${id}/unlink`);
+    showToast('↩️ Paciente desvinculado', 'ok');
+    await loadPatsList(); buildChips();
+  } catch(e) { showToast('❌ ' + (e?.error || 'Erro'), 'err'); }
+}
+
+function buildChips() {
+  ['obj-chips', 'log-chips'].forEach(cid => {
+    const el = $(cid); if (!el) return;
+    if (!allPats.length) { el.innerHTML = `<div style="color:rgba(255,255,255,.3);font-size:13px;padding:8px">Nenhum paciente vinculado ainda.</div>`; return; }
+    el.innerHTML = allPats.map((p, i) => `
+      <button class="pc ${i === 0 ? 'on' : ''}" onclick="selectPat('${p.id}','${cid}')">
+        <div class="av" style="width:24px;height:24px;font-size:9px">${p.user?.avatar || '?'}</div>
+        <span>${(p.user?.name || '').split(' ')[0]}</span>
+      </button>`).join('');
+  });
+  if (allPats.length) selectPat(allPats[0].id);
+}
+
+function selectPat(pid, chipSet) {
+  selPid = pid;
+  const sets = chipSet ? [chipSet] : ['obj-chips', 'log-chips'];
+  sets.forEach(cid => {
+    document.querySelectorAll(`#${cid} .pc`).forEach(c => c.classList.toggle('on', c.getAttribute('onclick')?.includes(`'${pid}'`)));
+  });
+  const activeTab = document.querySelector('#sc-adm .tp.on')?.id;
+  if (activeTab === 'a-aobjs' || chipSet === 'obj-chips') loadObjsForPat(pid);
+  if (activeTab === 'a-alogs' || chipSet === 'log-chips') loadLogsForPat(pid);
+}
+
+/* ── Objectives ── */
+async function loadObjsForPat(pid) {
+  const pat = allPats.find(p => p.id === pid); if (!pat) return;
+  setText('obj-who', `Progresso de ${(pat.user?.name || '').split(' ')[0]}`);
+  setText('obj-xp-txt', `⭐ ${pat.xp} XP`);
+  setText('obj-lv-txt', `Nível ${pat.level}`);
+  document.getElementById('obj-xf')?.style.setProperty('--xw', Math.round((pat.xp % 25) / 25 * 100) + '%');
+  $('add-obj-btn').style.display = 'block';
+  try {
+    const objs = await api.get(`/objectives?patientId=${pid}`);
+    objsCache[pid] = objs;
+    setText('obj-ptxt', `${objs.filter(o=>o.done).length} / ${objs.length} concluídos`);
+    renderObjs(pid, objs);
+  } catch(e) { $('obj-list').innerHTML = errState(e); }
+}
+
+function renderObjs(pid, objs) {
+  const el = $('obj-list');
+  if (!objs.length) { el.innerHTML = emptyState('🎯','Sem objetivos','Adicione o primeiro objetivo para este paciente.'); return; }
+  el.innerHTML = objs.map(o => {
+    const t = tipsFor(o.category);
+    return `
+    <div class="chk ${o.done ? 'dn' : ''} au">
+      <div class="chk-c ${o.done ? 'dn' : 'td'}" onclick="togObj('${o.id}','${pid}')"></div>
+      <div style="flex:1">
+        <div class="chk-tx">${o.text}</div>
+        <div class="chk-mt">+${o.xpReward} XP · ${o.category}${o.deadline ? ' · Prazo: ' + fmtD(o.deadline) : ''}${o.done ? ` <span style="color:var(--g5)">· ✅ Concluído</span>` : ''}</div>
+        ${!o.done ? `<div class="tips-card dk" style="margin-top:8px"><div class="tips-title">${t.title}</div><ul class="tips-ul">${t.tips.slice(0,2).map(tip=>`<li>${tip}</li>`).join('')}</ul><div class="tips-motiv">${t.motivation}</div></div>` : ''}
+      </div>
+      <button class="btn btn-dr sm" style="font-size:11px;padding:4px 10px;flex-shrink:0;margin-top:1px" onclick="delObj('${o.id}','${pid}')">✕</button>
+    </div>`;
+  }).join('');
+}
+
+async function togObj(oid, pid) {
+  try {
+    const res = await api.patch(`/objectives/${oid}/toggle`);
+    showToast(res.done ? `⭐ Concluído! +${res.xpReward || ''} XP` : '↩️ Desmarcado', 'ok');
+    // Refresh patient XP
+    const freshPat = await api.get(`/users/patients/${pid}`).catch(() => null);
+    if (freshPat) { const idx = allPats.findIndex(p => p.id === pid); if (idx >= 0) allPats[idx] = { ...allPats[idx], ...freshPat }; }
+    await loadObjsForPat(pid);
+    const pat = allPats.find(p => p.id === pid);
+    if (pat) { setText('obj-xp-txt', `⭐ ${pat.xp} XP`); setText('obj-lv-txt', `Nível ${pat.level}`); document.getElementById('obj-xf')?.style.setProperty('--xw', Math.round((pat.xp%25)/25*100)+'%'); }
+  } catch(e) { showToast('❌ ' + (e?.error || 'Erro'), 'err'); }
+}
+
+async function delObj(oid, pid) {
+  if (!confirm('Remover este objetivo?')) return;
+  try { await api.delete(`/objectives/${oid}`); showToast('🗑️ Objetivo removido', 'ok'); loadObjsForPat(pid); }
+  catch(e) { showToast('❌ ' + (e?.error || 'Erro'), 'err'); }
+}
+
+function openAddObj() {
+  if (!selPid) { showToast('⚠️ Selecione um paciente', 'err'); return; }
+  const pat = allPats.find(p => p.id === selPid);
+  openMdl(`Novo Objetivo — ${(pat?.user?.name || '').split(' ')[0]}`, `
+    <div class="dfd"><label>Objetivo <span style="color:rgba(220,100,100,.8)">*</span></label><input type="text" id="no-tx" placeholder="Descreva o objetivo do paciente…"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="dfd"><label>XP de recompensa</label><input type="number" id="no-xp" value="15" min="5" max="100"></div>
+      <div class="dfd"><label>Prazo (opcional)</label><input type="date" id="no-dl"></div>
+    </div>
+    <div class="dfd"><label>Categoria</label>
+      <select id="no-cat"><option value="OTHER">Geral</option><option value="SLEEP">💤 Sono</option><option value="EMOTIONAL">💚 Regulação Emocional</option><option value="SOCIAL">🤝 Habilidades Sociais</option><option value="MOTOR">🏃 Coordenação Motora</option><option value="COGNITIVE">🧠 Foco e Cognição</option><option value="ROUTINE">📅 Rotina e Organização</option><option value="COMMUNICATION">🗣️ Comunicação</option></select>
+    </div>
+    <div class="vis-row"><div><div class="vis-lb">Visível para o paciente</div><div class="vis-dc">O paciente verá este objetivo e suas dicas</div></div><div class="tgl on" id="no-vis" onclick="this.classList.toggle('on')"><div class="tgl-k"></div></div></div>
+    <div class="err-box" id="no-err" style="display:none"></div>
+    <div style="display:flex;gap:10px"><button class="btn btn-dk md" style="flex:1" onclick="closeMdl()">Cancelar</button><button class="btn btn-p md" style="flex:1" onclick="saveObj()">Salvar</button></div>`);
+}
+
+async function saveObj() {
+  const text = ($('no-tx')?.value || '').trim(), xp = parseInt($('no-xp')?.value) || 15;
+  const dl = $('no-dl')?.value, cat = $('no-cat')?.value || 'OTHER';
+  const vis = $('no-vis')?.classList.contains('on');
+  if (!text) { $('no-err').textContent = '⚠️ Descreva o objetivo'; $('no-err').style.display = 'block'; return; }
+  try {
+    await api.post('/objectives', { patientId: selPid, text, xpReward: xp, deadline: dl || undefined, category: cat, isVisible: vis });
+    closeMdl(); showToast('✅ Objetivo adicionado!', 'ok'); loadObjsForPat(selPid);
+  } catch(e) { $('no-err').textContent = '⚠️ ' + (e?.error || 'Erro'); $('no-err').style.display = 'block'; }
+}
+
+/* ── Logs ── */
+async function loadLogsForPat(pid, forHome = false) {
+  try {
+    const logs = await api.get(`/logs?patientId=${pid}`);
+    logsCache[pid] = logs;
+    if (forHome) renderAdmLogs(logs.slice(0, 3), 'adm-recent-logs');
+    else         renderAdmLogs(logs, 'logs-list');
+  } catch(e) { $(forHome ? 'adm-recent-logs' : 'logs-list').innerHTML = errState(e); }
+}
+
+function renderAdmLogs(logs, cid) {
+  const el = $(cid); if (!el) return;
+  if (!logs.length) { el.innerHTML = emptyState('📝', 'Sem logs', 'Nenhum registro clínico para este paciente.'); return; }
+  const tc = { OBSERVATION:null, SESSION:'var(--g3)', PROGRESS:'var(--g1)', NOTE:'rgba(255,255,255,.6)' };
+  el.innerHTML = logs.map(l => `
+    <div class="log-it au">
+      <div class="log-hd"><span class="log-tp" ${tc[l.type] ? `style="color:${tc[l.type]}"` : ''}>${logLbl(l.type)}</span>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="log-dt">${fmtD(l.createdAt)}</span>
+          <div class="tgl ${l.isVisible ? 'on' : ''}" onclick="togLogVis('${l.id}',this,event)"><div class="tgl-k"></div></div>
+        </div>
+      </div>
+      <div class="log-tt">${l.title}</div>
+      <div class="log-ct">${l.content}</div>
+      <div class="log-vs">${l.isVisible ? '👁️ Visível para o paciente' : '🔒 Privado — apenas profissionais'}</div>
+    </div>`).join('');
+}
+
+async function togLogVis(id, el, ev) {
+  ev.stopPropagation(); el.classList.toggle('on');
+  const vis = el.classList.contains('on');
+  const vsEl = el.closest('.log-it')?.querySelector('.log-vs');
+  if (vsEl) vsEl.textContent = vis ? '👁️ Visível para o paciente' : '🔒 Privado — apenas profissionais';
+  try { await api.patch(`/logs/${id}/visibility`); showToast(vis ? '👁️ Visível para o paciente' : '🔒 Definido como privado', 'ok'); }
+  catch(e) { showToast('❌ ' + (e?.error || 'Erro'), 'err'); }
+}
+
+function openAddLog() {
+  if (!selPid) { showToast('⚠️ Selecione um paciente', 'err'); return; }
+  const pat = allPats.find(p => p.id === selPid);
+  openMdl(`Novo Registro — ${(pat?.user?.name || '').split(' ')[0]}`, `
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:18px" id="ltype">
+      ${[['OBSERVATION','Observação'],['SESSION','Sessão'],['PROGRESS','Progresso'],['NOTE','Nota']].map(([v,l],i)=>`<button data-type="${v}" onclick="pickLT(this)" style="padding:9px 4px;border-radius:9px;text-align:center;font-size:11px;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:all .15s;background:${i===0?'rgba(3,187,133,.18)':'rgba(255,255,255,.05)'};outline:${i===0?'1.5px solid #03bb85':'1.5px solid rgba(3,187,133,.13)'};color:${i===0?'var(--g3)':'rgba(255,255,255,.36)'}">${l}</button>`).join('')}
+    </div>
+    <div class="dfd"><label>Título</label><input type="text" id="nl-tt" placeholder="Resumo em uma linha…"></div>
+    <div class="dfd"><label>Conteúdo</label><textarea rows="5" id="nl-ct" placeholder="Detalhes da sessão ou observação clínica…"></textarea></div>
+    <div class="vis-row"><div><div class="vis-lb">Visível para o paciente</div><div class="vis-dc">O paciente poderá ler este registro</div></div><div class="tgl" id="lv" onclick="this.classList.toggle('on')"><div class="tgl-k"></div></div></div>
+    <div class="err-box" id="nl-err" style="display:none"></div>
+    <div style="display:flex;gap:10px"><button class="btn btn-dk md" style="flex:1" onclick="closeMdl()">Cancelar</button><button class="btn btn-p md" style="flex:1" onclick="saveLog()">Salvar</button></div>`);
+}
+function pickLT(btn) {
+  document.querySelectorAll('#ltype button').forEach(b => { b.style.background='rgba(255,255,255,.05)'; b.style.outline='1.5px solid rgba(3,187,133,.13)'; b.style.color='rgba(255,255,255,.36)'; });
+  btn.style.background='rgba(3,187,133,.18)'; btn.style.outline='1.5px solid #03bb85'; btn.style.color='var(--g3)';
+}
+async function saveLog() {
+  const type = document.querySelector('#ltype button[style*="rgba(3,187,133,.18)"]')?.getAttribute('data-type') || 'OBSERVATION';
+  const tt = ($('nl-tt')?.value || '').trim(), ct = ($('nl-ct')?.value || '').trim();
+  const vis = $('lv')?.classList.contains('on');
+  if (!tt || !ct) { $('nl-err').textContent = '⚠️ Preencha título e conteúdo'; $('nl-err').style.display = 'block'; return; }
+  try {
+    await api.post('/logs', { patientId: selPid, type, title: tt, content: ct, isVisible: vis });
+    closeMdl(); showToast('📝 Log registrado!', 'ok'); loadLogsForPat(selPid);
+  } catch(e) { $('nl-err').textContent = '⚠️ ' + (e?.error || 'Erro'); $('nl-err').style.display = 'block'; }
+}
+
+/* ── Pro Profile ── */
+function openEditPro() {
+  openMdl('Editar Perfil', `
+    <div class="dfd"><label>Especialidade</label><input type="text" id="ep-spec" value="${USER?.professionalProfile?.specialty || ''}"></div>
+    <div class="dfd"><label>Mini biografia</label><textarea id="ep-bio" rows="4" placeholder="Conte sobre sua experiência e abordagem…"></textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="dfd"><label>Experiência</label><input type="text" id="ep-exp" placeholder="Ex: 12 anos de experiência"></div>
+      <div class="dfd"><label>Formação</label><input type="text" id="ep-edu" placeholder="Ex: USP — Psicologia"></div>
+    </div>
+    <div class="dfd"><label>Registro (CRP/CRN)</label><input type="text" id="ep-crp" value="${USER?.professionalProfile?.crp || ''}"></div>
+    <div class="dfd"><label>Abordagens (separadas por vírgula)</label><input type="text" id="ep-app" placeholder="ABA, TEACCH, TCC"></div>
+    <div class="err-box" id="ep-err" style="display:none"></div>
+    <div style="display:flex;gap:10px"><button class="btn btn-dk md" style="flex:1" onclick="closeMdl()">Cancelar</button><button class="btn btn-p md" style="flex:1" onclick="saveEditPro()">Salvar</button></div>`);
+}
+async function saveEditPro() {
+  const data = { specialty: $('ep-spec')?.value, bio: $('ep-bio')?.value, experience: $('ep-exp')?.value, education: $('ep-edu')?.value, crp: $('ep-crp')?.value, approaches: ($('ep-app')?.value || '').split(',').map(s => s.trim()).filter(Boolean) };
+  try {
+    const updated = await api.patch('/users/professional/me', data);
+    if (USER?.professionalProfile) Object.assign(USER.professionalProfile, data);
+    localStorage.setItem('eco_user', JSON.stringify(USER));
+    setText('aprof-bio', updated.bio || '—');
+    const apEl = $('aprof-approaches');
+    if (apEl) apEl.innerHTML = (updated.approaches || []).map(a => `<span style="padding:3px 10px;border-radius:20px;background:rgba(3,187,133,.12);font-size:11px;color:var(--g3);font-weight:600">${a}</span>`).join('');
+    closeMdl(); showToast('✅ Perfil atualizado!', 'ok');
+  } catch(e) { $('ep-err').textContent = '⚠️ ' + (e?.error || 'Erro'); $('ep-err').style.display = 'block'; }
+}
+
+/* ── Institution Mode ── */
+async function toggleInstMode() {
+  try {
+    const r = await api.patch('/institutions/mode/toggle');
+    if (USER?.professionalProfile) { USER.professionalProfile.institutionMode = r.institutionMode; localStorage.setItem('eco_user', JSON.stringify(USER)); }
+    updateInstModeUI(r.institutionMode, r.institutionCount, 3);
+    showToast(r.institutionMode ? '🏢 Modo Instituição ativado!' : '🔒 Modo Instituição desativado', 'ok');
+    loadInstTab();
+  } catch(e) { showToast('❌ ' + (e?.error || 'Erro'), 'err'); }
+}
+
+async function loadInstTab() {
+  const el = $('inst-content'); if (!el) return;
+  el.innerHTML = `<div class="page-ld dk"><div class="spin-el dk"></div></div>`;
+  try {
+    const data = await api.get('/institutions/my/list');
+    instData = data;
+    updateInstModeUI(data.institutionMode, data.institutionCount, data.maxAllowed);
+    if (!data.institutionMode) {
+      el.innerHTML = `
+        <div class="inst-mode-card" style="margin-bottom:0">
+          <div class="inst-mode-header"><div><div class="inst-mode-title">🏢 Modo Instituição está inativo</div></div></div>
+          <div class="inst-mode-desc" style="margin-bottom:14px">Ative o Modo Instituição no seu <a onclick="goTab('a','aprof')" style="color:var(--g3);cursor:pointer;text-decoration:underline">Perfil</a> para criar e gerenciar instituições.</div>
+          <button class="btn btn-dk sm" onclick="toggleInstMode()">Ativar Modo Instituição</button>
+        </div>`;
+      return;
+    }
+    if (!data.memberships.length) {
+      el.innerHTML = `<div class="empty-state"><div class="ei">🏢</div><h4 style="color:rgba(255,255,255,.6)">Nenhuma instituição ainda</h4><p>Crie sua primeira instituição.</p><button class="btn btn-p sm" style="margin-top:12px" onclick="openCreateInst()">＋ Criar Instituição</button></div>`;
+      if($('btn-new-inst')) $('btn-new-inst').style.display = 'inline-flex';
+      return;
+    }
+    if($('btn-new-inst')) $('btn-new-inst').style.display = data.institutionCount < data.maxAllowed ? 'inline-flex' : 'none';
+    el.innerHTML = data.memberships.map(m => renderInstCard(m)).join('');
+  } catch(e) {
+    el.innerHTML = errState(e);
+  }
+}
+
+function renderInstCard(m) {
+  const inst = m.institution;
+  const isAdmin = m.role === 'ADMIN';
+  const members = inst.professionals || [];
+  return `
+  <div class="inst-card au">
+    <div class="inst-card-hd">
+      <div class="inst-emoji">${inst.emoji || '🏥'}</div>
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:15px;color:rgba(255,255,255,.9)">${inst.name}</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4)">${inst.type || ''} · ${inst.city || ''}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:2px">⭐ ${inst.rating || 5} · 🕐 ${inst.slots || 0} vagas · 👥 ${members.length} profissionais</div>
+      </div>
+      ${isAdmin ? `<div style="display:flex;gap:6px">
+        <button class="btn btn-dk sm" onclick="openEditInst('${inst.id}')">✏️</button>
+        <button class="btn btn-dr sm" onclick="deleteInst('${inst.id}','${inst.name}')">🗑️</button>
+      </div>` : `<span class="bg bg-d" style="font-size:10px">Membro</span>`}
+    </div>
+    ${inst.description ? `<p style="font-size:12px;color:rgba(255,255,255,.42);margin-bottom:12px;line-height:1.6">${inst.description}</p>` : ''}
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">${(inst.tags || []).map(t => `<span style="padding:3px 9px;border-radius:20px;background:rgba(3,187,133,.1);font-size:11px;color:var(--g3)">${t.tag || t}</span>`).join('')}</div>
+    <div style="border-top:1px solid rgba(3,187,133,.08);padding-top:12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.7px">Equipe Profissional</div>
+        ${isAdmin ? `<button class="btn btn-dk sm" onclick="openAddMember('${inst.id}')">＋ Vincular</button>` : ''}
+      </div>
+      ${members.length ? members.map(p => `
+        <div class="inst-member-row">
+          <div class="av" style="width:34px;height:34px;font-size:12px;flex-shrink:0">${p.user?.avatar || '?'}</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.85)">${p.user?.name || 'Profissional'}</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.38)">${p.specialty || ''}</div>
+            ${p.bio ? `<div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px;line-height:1.4">${p.bio}</div>` : ''}
+            ${p.approaches?.length ? `<div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px">${p.approaches.map(a=>`<span style="padding:2px 7px;border-radius:20px;background:rgba(3,187,133,.1);font-size:10px;color:var(--g3)">${a}</span>`).join('')}</div>` : ''}
+          </div>
+          ${isAdmin ? `<button class="btn btn-dr sm" style="font-size:11px" onclick="removeMember('${inst.id}','${p.id}','${p.user?.name}')">✕</button>` : ''}
+        </div>`).join('') : `<div style="font-size:13px;color:rgba(255,255,255,.3);padding:8px 0">Nenhum profissional vinculado.</div>`}
+    </div>
+  </div>`;
+}
+
+function openCreateInst() {
+  if (!instData.institutionMode) { showToast('⚠️ Ative o Modo Instituição primeiro', 'err'); return; }
+  if (instData.institutionCount >= instData.maxAllowed) { showToast(`⚠️ Limite de ${instData.maxAllowed} instituições atingido`, 'err'); return; }
+  openMdl('Nova Instituição', `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="dfd" style="grid-column:1/-1"><label>Nome da Instituição <span style="color:rgba(220,100,100,.8)">*</span></label><input type="text" id="ci-name" placeholder="Ex: Instituto NeuroMente"></div>
+      <div class="dfd"><label>Tipo <span style="color:rgba(220,100,100,.8)">*</span></label><input type="text" id="ci-type" placeholder="Ex: Neuropsicologia"></div>
+      <div class="dfd"><label>Cidade <span style="color:rgba(220,100,100,.8)">*</span></label><input type="text" id="ci-city" placeholder="São Paulo"></div>
+      <div class="dfd"><label>Estado</label><input type="text" id="ci-state" placeholder="SP" maxlength="2" value="SP"></div>
+      <div class="dfd"><label>Vagas disponíveis</label><input type="number" id="ci-slots" value="10" min="1"></div>
+    </div>
+    <div class="dfd"><label>Descrição</label><textarea id="ci-desc" rows="3" placeholder="Descreva os serviços oferecidos…"></textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="dfd"><label>Telefone</label><input type="text" id="ci-phone" placeholder="(11) 0000-0000"></div>
+      <div class="dfd"><label>Emoji/Ícone</label><input type="text" id="ci-emoji" value="🏥" maxlength="4"></div>
+    </div>
+    <div class="dfd"><label>E-mail de contato</label><input type="email" id="ci-email" placeholder="contato@instituicao.com"></div>
+    <div class="dfd"><label>Tags (separadas por vírgula)</label><input type="text" id="ci-tags" placeholder="TEA, TDAH, Dislexia"></div>
+    <div class="err-box" id="ci-err" style="display:none"></div>
+    <div style="display:flex;gap:10px"><button class="btn btn-dk md" style="flex:1" onclick="closeMdl()">Cancelar</button><button class="btn btn-p md" style="flex:1" onclick="saveInst()">Criar Instituição</button></div>`);
+}
+
+async function saveInst() {
+  const name = ($('ci-name')?.value||'').trim(), type = ($('ci-type')?.value||'').trim(), city = ($('ci-city')?.value||'').trim();
+  if (!name||!type||!city) { $('ci-err').textContent='⚠️ Preencha nome, tipo e cidade'; $('ci-err').style.display='block'; return; }
+  const tags = ($('ci-tags')?.value||'').split(',').map(t=>t.trim()).filter(Boolean);
+  try {
+    await api.post('/institutions', { name, type, city, state:$('ci-state')?.value||'SP', description:$('ci-desc')?.value, phone:$('ci-phone')?.value, email:$('ci-email')?.value||undefined, slotsTotal:parseInt($('ci-slots')?.value)||10, emoji:$('ci-emoji')?.value||'🏥', tags });
+    closeMdl(); showToast('🏢 Instituição criada!', 'ok');
+    allOrgs = []; loadOrgsData();
+    loadInstTab();
+  } catch(e) { $('ci-err').textContent='⚠️ '+(e?.error||'Erro'); $('ci-err').style.display='block'; }
+}
+
+function openEditInst(id) {
+  const m = instData.memberships.find(m=>m.institution.id===id); if(!m) return;
+  const inst = m.institution;
+  openMdl(`Editar — ${inst.name}`, `
+    <div class="dfd"><label>Nome</label><input type="text" id="ei-name" value="${inst.name}"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="dfd"><label>Tipo</label><input type="text" id="ei-type" value="${inst.type||''}"></div>
+      <div class="dfd"><label>Cidade</label><input type="text" id="ei-city" value="${inst.city||''}"></div>
+    </div>
+    <div class="dfd"><label>Descrição</label><textarea id="ei-desc" rows="3">${inst.description||''}</textarea></div>
+    <div class="dfd"><label>Tags (separadas por vírgula)</label><input type="text" id="ei-tags" value="${(inst.tags||[]).map(t=>t.tag||t).join(', ')}"></div>
+    <div class="err-box" id="ei-err" style="display:none"></div>
+    <div style="display:flex;gap:10px"><button class="btn btn-dk md" style="flex:1" onclick="closeMdl()">Cancelar</button><button class="btn btn-p md" style="flex:1" onclick="saveEditInst('${id}')">Salvar</button></div>`);
+}
+
+async function saveEditInst(id) {
+  const name=($('ei-name')?.value||'').trim(), type=($('ei-type')?.value||'').trim(), city=($('ei-city')?.value||'').trim();
+  if(!name||!type||!city){$('ei-err').textContent='⚠️ Preencha nome, tipo e cidade';$('ei-err').style.display='block';return;}
+  const tags=($('ei-tags')?.value||'').split(',').map(t=>t.trim()).filter(Boolean);
+  try {
+    await api.patch(`/institutions/${id}`,{name,type,city,description:$('ei-desc')?.value,tags});
+    closeMdl();showToast('✅ Instituição atualizada!','ok');allOrgs=[];loadOrgsData();loadInstTab();
+  } catch(e){$('ei-err').textContent='⚠️ '+(e?.error||'Erro');$('ei-err').style.display='block';}
+}
+
+async function deleteInst(id, name) {
+  if(!confirm(`Excluir "${name}"? Esta ação não pode ser desfeita.`)) return;
+  try {
+    await api.delete(`/institutions/${id}`);
+    showToast('🗑️ Instituição excluída','ok');allOrgs=[];loadOrgsData();loadInstTab();
+  } catch(e){showToast('❌ '+(e?.error||'Erro'),'err');}
+}
+
+function openAddMember(instId) {
+  openMdl('Vincular Profissional', `
+    <p style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:16px">Informe o ID do perfil profissional a vincular. O profissional deve estar cadastrado na plataforma.</p>
+    <div class="dfd"><label>ID do Perfil Profissional</label><input type="text" id="am-pid" placeholder="UUID do perfil profissional"></div>
+    <div class="dfd"><label>Papel</label><select id="am-role"><option value="MEMBER">Membro</option><option value="ADMIN">Administrador</option></select></div>
+    <div class="err-box" id="am-err" style="display:none"></div>
+    <div style="display:flex;gap:10px"><button class="btn btn-dk md" style="flex:1" onclick="closeMdl()">Cancelar</button><button class="btn btn-p md" style="flex:1" onclick="saveMember('${instId}')">Vincular</button></div>`);
+}
+
+async function saveMember(instId) {
+  const pid=($('am-pid')?.value||'').trim(), role=$('am-role')?.value||'MEMBER';
+  if(!pid){$('am-err').textContent='⚠️ ID obrigatório';$('am-err').style.display='block';return;}
+  try {
+    await api.post(`/institutions/${instId}/members`,{professionalId:pid,role});
+    closeMdl();showToast('✅ Profissional vinculado!','ok');loadInstTab();
+  } catch(e){$('am-err').textContent='⚠️ '+(e?.error||'Erro');$('am-err').style.display='block';}
+}
+
+async function removeMember(instId, proId, name) {
+  if(!confirm(`Remover ${name||'este profissional'} da instituição?`)) return;
+  try {
+    await api.delete(`/institutions/${instId}/members/${proId}`);
+    showToast('↩️ Profissional removido','ok');loadInstTab();
+  } catch(e){showToast('❌ '+(e?.error||'Erro'),'err');}
+}
+
+/* ═══════════════════════════════════════════════
+   BOOKING MODAL
+═══════════════════════════════════════════════ */
+function openBook(id, name, emoji, type = 'inst') {
+  selTime = '14:00';
+  openMdl(`Agendar — ${name}`, `
+    <div style="text-align:center;margin-bottom:18px"><div style="font-size:44px;margin-bottom:8px">${emoji}</div><div style="font-size:15px;font-weight:700;color:rgba(255,255,255,.9)">${name}</div></div>
+    <div class="dfd"><label>Data</label><input type="date" id="bk-dt"></div>
+    <div style="margin-bottom:15px"><label style="display:block;font-size:10px;font-weight:700;color:rgba(164,255,247,.46);text-transform:uppercase;letter-spacing:.9px;margin-bottom:8px">Horário</label>
+      <div class="tslots">${['09:00','10:00','11:00','14:00','15:00','16:00','17:00'].map(t=>`<div class="tslot ${t==='14:00'?'on':''}" onclick="pickTime(this,'${t}')">${t}</div>`).join('')}</div>
+    </div>
+    <div class="dfd"><label>Observações (opcional)</label><textarea rows="3" id="bk-notes" placeholder="Descreva suas necessidades ou dúvidas…"></textarea></div>
+    <div class="err-box" id="bk-err" style="display:none"></div>
+    <button class="btn btn-p lg fw" onclick="confirmBook('${id}','${name}','${type}')">Confirmar Agendamento</button>`);
+}
+function pickTime(el,t){document.querySelectorAll('.tslot').forEach(s=>s.classList.remove('on'));el.classList.add('on');selTime=t;}
+
+async function confirmBook(id, name, type) {
+  const d = $('bk-dt')?.value; if(!d){$('bk-err').textContent='⚠️ Selecione uma data';$('bk-err').style.display='block';return;}
+  const ds = new Date(d+'T00:00').toLocaleDateString('pt-BR');
+  const notes = $('bk-notes')?.value||'';
+  const payload = type==='inst' ? {institutionId:id,date:d,time:selTime,notes} : {organizationId:id,date:d,time:selTime,notes};
+  try {
+    await api.post('/appointments', payload);
+    $('mbd').innerHTML = `
+      <div class="succ">
+        <span class="succ-ic">🎉</span><h3 class="succ-t">Consulta Agendada!</h3>
+        <p class="succ-s">Sua sessão com ${name} foi confirmada.</p>
+        <div class="succ-bx"><div style="font-size:12px;color:rgba(255,255,255,.36);margin-bottom:8px">Detalhes</div><div style="font-size:14px;color:rgba(255,255,255,.88);font-weight:700">${name}</div><div style="font-size:12px;color:rgba(255,255,255,.42);margin-top:5px">📅 ${ds} · ${selTime}h</div>${notes?`<div style="font-size:12px;color:rgba(255,255,255,.35);margin-top:5px;font-style:italic">"${notes}"</div>`:''}</div>
+        <button class="btn btn-p md fw" onclick="closeMdl();goTab('p','apts')">Ver minhas consultas</button>
+      </div>`;
+    if(USER?.role==='PATIENT') loadPatHome();
+  } catch(e){$('bk-err').textContent='⚠️ '+(e?.error||'Erro ao agendar');$('bk-err').style.display='block';}
+}
+
+/* ═══════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════ */
+function showScreen(id) {
+  document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+}
+
+function goTab(mode, tab) {
+  const scr=mode==='p'?'sc-pat':'sc-adm', attr=mode==='p'?'data-p':'data-a', pfx=mode==='p'?'p-':'a-';
+  document.querySelectorAll(`#${scr} .tp`).forEach(p=>p.classList.remove('on'));
+  const tgt=document.getElementById(pfx+tab);
+  if(tgt){tgt.classList.add('on');tgt.querySelectorAll('.au').forEach((el,i)=>{el.style.animation='none';requestAnimationFrame(()=>{el.style.animation='';el.style.animationDelay=i*.055+'s';});});}
+  document.querySelectorAll(`#${scr} .nt[${attr}]`).forEach(b=>b.classList.toggle('on',b.getAttribute(attr)===tab));
+  document.querySelectorAll(`#${scr} .bnb[${attr}]`).forEach(b=>{
+    const on=b.getAttribute(attr)===tab; b.classList.toggle('on',on);
+    let d=b.querySelector('.bnb-dot');
+    if(on&&!d){d=document.createElement('div');d.className='bnb-dot';b.appendChild(d);}
+    else if(!on&&d) d.remove();
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Lazy load
+  if(mode==='p'){
+    if(tab==='orgs') loadOrgsTab();
+    if(tab==='apts') loadAptsTab();
+  } else {
+    if(tab==='apats') loadPatsList();
+    if(tab==='alogs'&&selPid) loadLogsForPat(selPid);
+    if(tab==='ainst') loadInstTab();
+    if(tab==='aprof') loadAdmHome();
+  }
+}
+
+function chipSingle(el){el.closest('.chips').querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');}
+
+/* ═══════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════ */
+function openMdl(title,html,light=false){
+  const box=$('mbox');
+  $('mtt').textContent=title; $('mbd').innerHTML=html;
+  box.className=light?'mbox lt':'mbox';
+  $('mtt').style.color=light?'var(--tx)':'#fff';
+  document.querySelector('.mcl').style.color=light?'var(--mu)':'rgba(255,255,255,.32)';
+  $('ov').classList.add('on'); document.body.style.overflow='hidden';
+  setTimeout(()=>document.querySelectorAll('.mbox .btn-p').forEach(b=>b.addEventListener('click',addRipple)),50);
+}
+function closeMdl(){$('ov').classList.remove('on');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>e.key==='Escape'&&closeMdl());
+
+/* ═══════════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════════ */
+let _tt;
+function showToast(msg, type='ok') {
+  const t=$('toast');
+  t.className=type;t.textContent=msg;t.style.display='block';
+  t.style.animation='none';requestAnimationFrame(()=>{t.style.animation='toast .3s cubic-bezier(.22,1,.36,1)';});
+  clearTimeout(_tt);_tt=setTimeout(()=>t.style.display='none',2800);
+}
+
+/* ═══════════════════════════════════════════════
+   POLISH & UTILS
+═══════════════════════════════════════════════ */
+function initScroll(){
+  ['pat-nav','adm-nav'].forEach(id=>{
+    const el=document.getElementById(id); if(!el)return;
+    window.addEventListener('scroll',()=>el.classList.toggle('scrolled',window.scrollY>8),{passive:true});
+  });
+}
+function addRipple(e){
+  const btn=e.currentTarget,rect=btn.getBoundingClientRect(),size=Math.max(rect.width,rect.height);
+  const c=document.createElement('span');
+  c.style.cssText=`position:absolute;border-radius:50%;width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;background:rgba(255,255,255,.18);transform:scale(0);animation:ripple .5s linear;pointer-events:none`;
+  btn.style.overflow='hidden';btn.appendChild(c);setTimeout(()=>c.remove(),550);
+}
+function initRipples(){document.querySelectorAll('.btn-p,.lg-btn').forEach(b=>b.addEventListener('click',addRipple));}
+
+const $=id=>document.getElementById(id);
+function setText(id,val){const el=$(id);if(el)el.textContent=val;}
+
+function fmtD(d){
+  if(!d)return'—';
+  try{
+    const dt=new Date(d),now=new Date();
+    const diff=Math.floor((dt-now)/86400000);
+    if(diff===-1)return'Ontem';
+    if(diff===0)return'Hoje';
+    if(diff===1)return'Amanhã';
+    if(diff>1&&diff<8)return`Em ${diff} dias`;
+    return dt.toLocaleDateString('pt-BR');
+  }catch{return String(d).split('T')[0];}
+}
+
+function condLbl(c){return{TEA:'TEA',ADHD:'TDAH',DYSLEXIA:'Dislexia',DYSPRAXIA:'Dyspraxia',OTHER:'Outra',UNSPECIFIED:'—'}[c]||c||'—';}
+function logLbl(t){return{OBSERVATION:'Observação',SESSION:'Sessão',PROGRESS:'Progresso',NOTE:'Nota'}[t]||t;}
+function emptyState(icon,title,desc){return`<div class="empty-state"><div class="ei">${icon}</div><h4 style="color:rgba(255,255,255,.55)">${title}</h4><p>${desc}</p></div>`;}
+function errState(e){return`<div class="empty-state"><div class="ei">⚠️</div><h4 style="color:#f08080">Erro ao carregar</h4><p style="color:rgba(255,255,255,.3)">${e?.error||'Verifique sua conexão e tente novamente.'}</p></div>`;}
+</script>
+<noscript>
+  <div style="position:fixed;inset:0;background:#0d1f18;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;z-index:99999">
+    <div>
+      <div style="font-size:48px;margin-bottom:16px">🌿</div>
+      <h1 style="font-size:24px;margin-bottom:12px">EcoConnect</h1>
+      <p style="color:rgba(255,255,255,.6);font-size:16px;line-height:1.6">
+        Para usar o EcoConnect, ative o JavaScript no seu navegador.<br>
+        <a href="https://support.google.com/adsense/answer/12654" style="color:#03bb85;margin-top:12px;display:inline-block">Como ativar o JavaScript</a>
+      </p>
+    </div>
+  </div>
+</noscript>
 </body>
 </html>
